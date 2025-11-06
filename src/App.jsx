@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<TempPage />} />
           {/*<Route path="/main" element={<MainPage />} />
           <Route path="/list" element={<ListPage />} />
-          <Route path="/rolling" element={<RollingPage />} />
+            <Route path="/rolling" element={<RollingPage />} />
           <Route path="/post" element={<PostPage />} /> */}
           <Route path="/message-page" element={<MessagePage />} />
           <Route path="/test-page" element={<TestPage />} />
