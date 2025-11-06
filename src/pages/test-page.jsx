@@ -5,7 +5,6 @@ import media from "@/styles/media";
 
 const Container = styled.div`
   padding: 40px 20px;
-  max-width: 800px;
   margin: 0 auto;
 `;
 
@@ -41,6 +40,56 @@ export default function TestPage() {
   return (
     <Container>
       <Title>스타일 테스트</Title>
+      <ResponsiveBox>
+        <strong>창 크기를 조절해보세요!</strong>
+        <br />
+        <br />
+        모바일(~599px): 파란색 배경, 작은 폰트
+        <br />
+        태블릿(600~1023px): 초록색 배경, 중간 폰트
+        <br />
+        데스크톱(1024px~): 보라색 배경, 큰 폰트
+      </ResponsiveBox>
+      <ResponsiveBox>
+        <strong>창 크기를 조절해보세요!</strong>
+        <br />
+        <br />
+        모바일(~599px): 파란색 배경, 작은 폰트
+        <br />
+        태블릿(600~1023px): 초록색 배경, 중간 폰트
+        <br />
+        데스크톱(1024px~): 보라색 배경, 큰 폰트
+      </ResponsiveBox>
+      <ResponsiveBox>
+        <strong>창 크기를 조절해보세요!</strong>
+        <br />
+        <br />
+        모바일(~599px): 파란색 배경, 작은 폰트
+        <br />
+        태블릿(600~1023px): 초록색 배경, 중간 폰트
+        <br />
+        데스크톱(1024px~): 보라색 배경, 큰 폰트
+      </ResponsiveBox>
+      <ResponsiveBox>
+        <strong>창 크기를 조절해보세요!</strong>
+        <br />
+        <br />
+        모바일(~599px): 파란색 배경, 작은 폰트
+        <br />
+        태블릿(600~1023px): 초록색 배경, 중간 폰트
+        <br />
+        데스크톱(1024px~): 보라색 배경, 큰 폰트
+      </ResponsiveBox>
+      <ResponsiveBox>
+        <strong>창 크기를 조절해보세요!</strong>
+        <br />
+        <br />
+        모바일(~599px): 파란색 배경, 작은 폰트
+        <br />
+        태블릿(600~1023px): 초록색 배경, 중간 폰트
+        <br />
+        데스크톱(1024px~): 보라색 배경, 큰 폰트
+      </ResponsiveBox>
       <ResponsiveBox>
         <strong>창 크기를 조절해보세요!</strong>
         <br />
