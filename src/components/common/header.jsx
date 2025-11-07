@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import styled from "styled-components";
 import logo from "@/assets/icons/logo.svg";
+import Button from "@/components/common/button";
 
 const ContainWrapper = styled.div`
   position: sticky;
@@ -47,7 +48,9 @@ export default function Header({ showButton }) {
             {showButton && (
               <ButtonWrapper>
                 <Link to="/post-page">
-                  <button>롤링 페이퍼 만들기</button>
+                  <Button variant="outlined" size="medium">
+                    롤링 페이퍼 만들기
+                  </Button>
                 </Link>
               </ButtonWrapper>
             )}
