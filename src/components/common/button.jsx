@@ -147,7 +147,7 @@ const VARIANT_STYLES = {
   `,
 };
 
-const CustomButton = styled.button`
+const ButtonStyle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -173,7 +173,7 @@ export default function Button({
   ...props
 }) {
   return (
-    <CustomButton variant={variant} size={size} {...props}>
+    <ButtonStyle variant={variant} size={size} {...props}>
       {variant === "plus" ? (
         <img src={plusIcon} alt="추가" className="plus-icon" />
       ) : variant === "delete" ? (
@@ -186,6 +186,6 @@ export default function Button({
       ) : (
         children
       )}
-    </CustomButton>
+    </ButtonStyle>
   );
 }
