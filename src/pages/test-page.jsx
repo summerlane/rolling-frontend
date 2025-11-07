@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { colors } from "@/styles/colors";
 import { font } from "@/styles/font";
 import media from "@/styles/media";
+import Button from "@/components/common/button";
 
 const Container = styled.div`
   padding: 40px 20px;
@@ -36,10 +37,15 @@ const ResponsiveBox = styled.div`
   `}
 `;
 
+const CustomButton = styled(Button)`
+  width: 100%;
+  padding: 30px;
+`;
+
 export default function TestPage() {
   return (
     <Container>
-      <Title>스타일 테스트</Title>
+      <Title>공용 스타일 & 컴포넌트 테스트</Title>
       <ResponsiveBox>
         <strong>창 크기를 조절해보세요!</strong>
         <br />
@@ -50,6 +56,29 @@ export default function TestPage() {
         <br />
         데스크톱(1024px~): 보라색 배경, 큰 폰트
       </ResponsiveBox>
+      <Button variant="primary" size="large">
+        primary large
+      </Button>
+      <Button variant="secondary" size="medium">
+        secondary medium
+      </Button>
+      <Button variant="outlined" size="small" emoji>
+        outlined emoji
+      </Button>
+      <Button variant="outlined" size="small">
+        outlined small
+      </Button>
+      <Button variant="outlined" size="tiny">
+        outlined tiny
+      </Button>
+      <Button variant="plus" size="plus">
+        plus
+      </Button>
+      <Button variant="delete" size="delete">
+        delete
+      </Button>
+      <CustomButton>custom button</CustomButton>
+      <CustomButton disabled>custom button</CustomButton>
     </Container>
   );
 }
