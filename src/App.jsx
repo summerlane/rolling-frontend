@@ -20,11 +20,11 @@ function App() {
       <Routes>
         <Route element={<GlobalLayout />}>
           <Route path="/" element={<TempPage />} />
-          <Route path="/main" element={<TestPage />} />
-          <Route path="/list" element={<TestPage />} />
-          <Route path="/post-user" element={<TestPage />} />
-          <Route path="/post" element={<TestPage />} />
-          <Route path="/message" element={<TestPage />} />
+          {/* <Route path="/main" element={<MainPage />} />
+          <Route path="/list" element={<ListPage />} />
+          <Route path="/rolling" element={<RollingPage />} />
+          <Route path="/post" element={<PostPage />} />
+          <Route path="/post/:id/message" element={<MessagePage />} /> */}
           <Route path="/test-page" element={<TestPage />} />
           <Route path="/toast-test-page" element={<ToastTestPage />} />
         </Route>
