@@ -102,10 +102,6 @@ const MainFlexBoxRightPosition = styled.div`
     background-position: center bottom 25px;
     background-size: 100%;
   `}
-
-  ${media.large`
-    ${font.regular18}
-  `}
 `;
 
 const PointLabel = styled.div`
@@ -134,10 +130,6 @@ const MainTitle = styled.p`
   ${media.medium`
     width: 100%;
   `}
-
-  ${media.large`
-    
-  `}
 `;
 
 const MainTitleSmall = styled.p`
@@ -152,10 +144,6 @@ const MainTitleSmall = styled.p`
   ${media.medium`
     ${font.regular18};
     width: 100%;
-  `}
-
-  ${media.large`
-    
   `}
 `;
 
@@ -180,10 +168,6 @@ const Button = styled.button`
 
   ${media.medium`
     width: calc(100% - 48px);
-  `}
-
-  ${media.large`
-    
   `}
 `;
 
