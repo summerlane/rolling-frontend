@@ -11,7 +11,6 @@ import {
   PerpendicularLineFirst,
   RollingPageContainer,
 } from "@/styles/rolling-page-styles";
-import HeadNav from "@/components/head-nav";
 import RollingPageHeader from "@/pages/rolling-page-head";
 import ArrowDownIcon from "@/assets/icons/arrow-down.svg";
 import AddEmojiIcon from "@/assets/icons/add-emoji.svg";
@@ -21,7 +20,6 @@ import ShareIcon from "@/assets/icons/share.svg";
 export default function RollingPage() {
   return (
     <>
-      <HeadNav />
       <RollingHeaderContainer>
         <RollingHeaderUserInfo>
           To. Ashley Kim
