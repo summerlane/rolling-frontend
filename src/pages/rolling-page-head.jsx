@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { colors } from '@/styles/colors';
 import media from '@/styles/media';
 import { font } from '@/styles/font';
+import ShareModal from '@/components/common/share-modal';
 import {
   RollingHeaderImojiContainer,
   RollingHeaderImojiIconContainer,
@@ -138,6 +139,7 @@ export default function RollingPageHeader({
 }) {
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
   const [isEmojiDropdownOpen, setIsEmojiDropdownOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [selectedEmojis, setSelectedEmojis] = useState([
     { emoji: '😘', count: 12 },
     { emoji: '😍', count: 8 },
@@ -178,10 +180,21 @@ export default function RollingPageHeader({
     setIsEmojiDropdownOpen(false);
   };
 
+  const openShareModal = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const closeShareModal = () => {
+    setIsShareModalOpen(false);
+  };
+
   // 카운트 순으로 정렬하여 상위 3개만 추출
   const sortedEmojis = [...selectedEmojis].sort((a, b) => b.count - a.count);
   const topThreeEmojis = sortedEmojis.slice(0, 3);
   const hasMoreEmojis = selectedEmojis.length > 3;
+
+  // 현재 페이지 URL 가져오기
+  const currentUrl = window.location.href;
 
   return (
     <RollingHeaderImojiContainer>
@@ -228,8 +241,18 @@ export default function RollingPageHeader({
           </RollingHeaderImojiEditButton>
         </EmojiPickerComponent>
         <PerpendicularLineSecond />
-        <RollingHeaderLinkShareButton src={ShareIcon} />
+        <RollingHeaderLinkShareButton
+          src={ShareIcon}
+          onClick={openShareModal}
+          style={{ cursor: 'pointer' }}
+        />
       </RollingHeaderImojiEditButtonContainer>
+
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={closeShareModal}
+        shareUrl={currentUrl}
+      />
     </RollingHeaderImojiContainer>
   );
 }
