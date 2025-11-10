@@ -8,6 +8,7 @@ const ContainWrapper = styled.div`
   top: 0;
   background-color: white;
   border-bottom: 1px solid #ededed;
+  z-index: 1003;
 `;
 
 const Contain = styled.div`

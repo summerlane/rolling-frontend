@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   RollingHeaderContainer,
   RollingHeaderUserInfo,
   RollingHeaderRightContainer,
-  RollingHeaderUserPeopleContainer,
-  RollingHeaderUserPeopleImages,
-  RollingHeaderUserPeopleImage,
-  RollingHeaderUserDefaultImage,
-  RollingHeaderUserPeopleState,
   PerpendicularLineFirst,
   RollingPageContainer,
 } from "@/styles/rolling-page-styles";
 import RollingPageHeader from "@/pages/rolling-page-head";
+import ParticipantSection from "@/components/rolling/participant-section";
 import ArrowDownIcon from "@/assets/icons/arrow-down.svg";
 import AddEmojiIcon from "@/assets/icons/add-emoji.svg";
 import ShareIcon from "@/assets/icons/share.svg";
 
-
 export default function RollingPage() {
+  // TODO: 실제로는 API에서 받아올 데이터
+  // 임시 데이터 (나중에 API 호출로 대체)
+  const [profiles] = useState([
+    { id: 1, name: '김철수', profileImageURL: 'https://via.placeholder.com/28' },
+    { id: 2, name: '이영희', profileImageURL: 'https://via.placeholder.com/28' },
+    { id: 3, name: '박민수', profileImageURL: 'https://via.placeholder.com/28' },
+
+  ]);
+
   return (
     <>
       <RollingHeaderContainer>
@@ -26,35 +30,23 @@ export default function RollingPage() {
         </RollingHeaderUserInfo>
 
         <RollingHeaderRightContainer>
-          <RollingHeaderUserPeopleContainer>
-            {/* //여기에서 함수를 불러와서 처리해야함 */}
-            <RollingHeaderUserPeopleImages>
-              <RollingHeaderUserPeopleImage></RollingHeaderUserPeopleImage>
-              <RollingHeaderUserPeopleImage></RollingHeaderUserPeopleImage>
-              <RollingHeaderUserPeopleImage></RollingHeaderUserPeopleImage>
-              <RollingHeaderUserDefaultImage></RollingHeaderUserDefaultImage>
-            </RollingHeaderUserPeopleImages>
-
-            <RollingHeaderUserPeopleState>
-              <strong>23</strong>명이 작성 했어요!
-            </RollingHeaderUserPeopleState>
-
-          </RollingHeaderUserPeopleContainer>
+          {/* 참여자 프로필 섹션 */}
+          <ParticipantSection profiles={profiles} maxVisible={4} />
 
           <PerpendicularLineFirst />
+
+          {/* 이모지 및 공유 헤더 */}
           <RollingPageHeader
             ArrowDownIcon={ArrowDownIcon}
             AddEmojiIcon={AddEmojiIcon}
             ShareIcon={ShareIcon}
           />
-
         </RollingHeaderRightContainer>
-      </RollingHeaderContainer >
+      </RollingHeaderContainer>
 
       <RollingPageContainer>
-
+        {/* 롤링 페이퍼 컨텐츠가 들어갈 영역 */}
       </RollingPageContainer>
-
     </>
   );
 }

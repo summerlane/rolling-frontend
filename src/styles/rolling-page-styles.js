@@ -22,8 +22,7 @@ export const RollingHeaderContainer = styled.div`
     height: 68px;
     margin: 0 auto;
     padding: 13px 20px;
-    overflow-x: auto;
-    overflow-y: hidden;
+
     gap: 20px;
   `}
 
@@ -32,8 +31,7 @@ export const RollingHeaderContainer = styled.div`
     height: 68px;
     margin: 0;
     padding: 13px 20px;
-    overflow-x: auto;
-    overflow-y: hidden;
+
     gap: 10px;
   `}
 
@@ -123,9 +121,11 @@ export const RollingHeaderUserPeopleContainer = styled.div`
 
 //유저 이미지 프로필 사진들
 export const RollingHeaderUserPeopleImages = styled.div`
+  display: flex;
   width: 76px;
   height: 28px;
   position: relative;
+
   cursor: pointer;
     ${media.medium`
     
@@ -143,7 +143,7 @@ export const RollingHeaderUserPeopleImage = styled.img`
   width: 28px;
   height: 28px;
   border-radius: 140px;
-  border: 1.4px solid #000;
+  border: 1.4px solid #fff;
   position: relative;
   margin-left: -10px;
 `;
