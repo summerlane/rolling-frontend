@@ -1,6 +1,7 @@
-import { useContext } from "react";
-import { ToastContext } from "@/contexts/toast-context-state";
+import { createContext, useContext } from "react";
 
-export default function useToast() {
+export const ToastContext = createContext(null);
+
+export function useToast() {
   return useContext(ToastContext);
 }

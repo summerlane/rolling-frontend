@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "@/components/common/button";
-import useToast from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const Container = styled.div`
   padding: 40px;

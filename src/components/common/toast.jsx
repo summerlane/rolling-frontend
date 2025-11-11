@@ -37,7 +37,7 @@ const ToastStyle = styled.div`
   color: white;
   padding: 19px 30px;
   border-radius: 8px;
-  animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 0.3s
+  animation: ${({ $isClosing }) => ($isClosing ? fadeOut : fadeIn)} 0.3s
     ease-in-out forwards;
   ${font.regular16}
 
@@ -69,7 +69,7 @@ const ToastStyle = styled.div`
 
 export default function Toast({ children, type, isClosing, onClose }) {
   return (
-    <ToastStyle isClosing={isClosing}>
+    <ToastStyle $isClosing={isClosing}>
       <img
         src={type === "delete" ? deletedRedIcon : completedIcon}
         alt={type === "delete" ? "삭제" : "성공"}

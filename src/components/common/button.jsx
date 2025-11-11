@@ -154,8 +154,8 @@ const ButtonStyle = styled.button`
   gap: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  ${({ variant }) => VARIANT_STYLES[variant] || VARIANT_STYLES.primary}
-  ${({ size }) => SIZES[size] || SIZES.medium}
+  ${({ $variant }) => VARIANT_STYLES[$variant] || VARIANT_STYLES.primary}
+  ${({ $size }) => SIZES[$size] || SIZES.medium}
 
   &:disabled {
     background-color: ${colors.gray[300]};
@@ -173,7 +173,7 @@ export default function Button({
   ...props
 }) {
   return (
-    <ButtonStyle variant={variant} size={size} {...props}>
+    <ButtonStyle $variant={variant} $size={size} {...props}>
       {variant === "plus" ? (
         <img src={plusIcon} alt="추가" className="plus-icon" />
       ) : variant === "delete" ? (

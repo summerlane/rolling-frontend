@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import App from "./App.jsx";
-import ToastProvider from "@/contexts/toast-context";
+import { ToastProvider } from "@/components/common/toast-provider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>

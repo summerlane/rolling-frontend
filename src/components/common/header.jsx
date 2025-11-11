@@ -38,7 +38,7 @@ export default function Header({ showButton }) {
     <>
       <ContainWrapper>
         <Contain>
-          <HeaderWrapper showButton={showButton}>
+          <HeaderWrapper>
             <Link to="/">
               <LogoWrapper>
                 <img src={logo} alt="로고" />
