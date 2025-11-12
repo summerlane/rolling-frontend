@@ -4,6 +4,7 @@ import GlobalLayout from "@/components/common/global-layout";
 import TestPage from "@/pages/test-page";
 import MessagePage from "@/pages/message-page";
 import MainPage from "@/pages/main-page";
+import ListPage from "@/pages/list-page";
 import PostPage from "@/pages/post-page";
 import TempPage from "@/pages/temp-page";
 import ToastTestPage from "@/pages/toast-test-page";
