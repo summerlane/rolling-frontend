@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Toast from "@/components/common/toast";
 import { ToastContext } from "@/hooks/use-toast";
@@ -9,7 +9,7 @@ export function ToastProvider({ children }) {
   const autoCloseTimerRef = useRef(null);
   const closeAnimTimerRef = useRef(null);
 
-  const hideToast = () => {
+  const hideToast = useCallback(() => {
     if (autoCloseTimerRef.current) {
       clearTimeout(autoCloseTimerRef.current);
       autoCloseTimerRef.current = null;
@@ -28,26 +28,29 @@ export function ToastProvider({ children }) {
     closeAnimTimerRef.current = setTimeout(() => {
       setToast(null);
       closeAnimTimerRef.current = null;
-    }, 3000);
-  };
+    }, 300);
+  }, []);
 
-  const showToast = (message, type = "success") => {
-    if (autoCloseTimerRef.current) clearTimeout(autoCloseTimerRef.current);
-    if (closeAnimTimerRef.current) {
-      clearTimeout(closeAnimTimerRef.current);
-    }
+  const showToast = useCallback(
+    (message, type = "success") => {
+      if (autoCloseTimerRef.current) clearTimeout(autoCloseTimerRef.current);
+      if (closeAnimTimerRef.current) {
+        clearTimeout(closeAnimTimerRef.current);
+      }
 
-    setToast({
-      message,
-      type,
-      key: Date.now(),
-      isClosing: false,
-    });
+      setToast({
+        message,
+        type,
+        key: Date.now(),
+        isClosing: false,
+      });
 
-    autoCloseTimerRef.current = setTimeout(() => {
-      hideToast();
-    }, 3000);
-  };
+      autoCloseTimerRef.current = setTimeout(() => {
+        hideToast();
+      }, 5000);
+    },
+    [hideToast]
+  );
 
   const contextValue = {
     success: (message) => showToast(message, "success"),
