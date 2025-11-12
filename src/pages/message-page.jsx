@@ -105,12 +105,6 @@ export const SelectableImageItem = styled.li`
   transition: transform 0.2s, border 0.2s;
 
   border: 2px solid transparent;
-  ${({ isSelected }) =>
-    isSelected &&
-    css`
-      border-color: #3f60ff; /* 선택된 이미지 하이라이트 색상 */
-      transform: scale(1.05);
-    `}
 
   &:hover {
     opacity: 0.8;
@@ -195,10 +189,7 @@ function MessagePage() {
 
             <SelectableImagesList>
               {selectableImages.map((image) => (
-                <SelectableImageItem
-                  key={image.id}
-                  isSelected={image.isSelected}
-                >
+                <SelectableImageItem key={image.id}>
                   <img src={image.url} alt={`프로필 ${image.id}`} />
                 </SelectableImageItem>
               ))}
