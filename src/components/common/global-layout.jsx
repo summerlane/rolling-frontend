@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router";
 import Header from "@/components/common/header";
 
-const PAGES_WITH_BUTTON = ["main-page", "list-page"];
+const PAGES_WITH_BUTTON = ["main", "list"];
 
 export default function GlobalLayout() {
   const location = useLocation();

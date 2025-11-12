@@ -30,15 +30,15 @@ export default function TempPage() {
       <Link to="/post">
         <CustomButton size="large">롤페 생성 페이지</CustomButton>
       </Link>
-      <Link to="/message-page">
+      <Link to="/message">
         <CustomButton size="large">롤페 메시지 페이지</CustomButton>
       </Link>
-      <Link to="/test-page">
+      <Link to="/test">
         <CustomButton variant="secondary" size="large">
           테스트 페이지
         </CustomButton>
       </Link>
-      <Link to="/toast-test-page">
+      <Link to="/toast-test">
         <CustomButton variant="secondary" size="large">
           toast 테스트 페이지
         </CustomButton>

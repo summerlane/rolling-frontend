@@ -48,7 +48,7 @@ export default function Header({ showButton }) {
             </Link>
             {showButton && (
               <ButtonWrapper>
-                <Link to="/post-page">
+                <Link to="/rolling">
                   <Button variant="outlined" size="medium">
                     롤링 페이퍼 만들기
                   </Button>
