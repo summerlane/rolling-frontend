@@ -49,7 +49,7 @@ export default function RollingPage() {
       </RollingHeaderContainer>
 
       <RollingPageContainer>
-        <CardContents maxVisible={6} />
+        <CardContents />
       </RollingPageContainer>
     </>
   );

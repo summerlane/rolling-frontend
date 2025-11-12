@@ -13,21 +13,19 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ToastProvider>
-        <Routes>
-          <Route element={<GlobalLayout />}>
-            <Route path="/" element={<TempPage />} />
-            {/* <Route path="/main" element={<MainPage />} />
+      <Routes>
+        <Route element={<GlobalLayout />}>
+          <Route path="/" element={<TempPage />} />
+          {/* <Route path="/main" element={<MainPage />} />
             <Route path="/list" element={<ListPage />} />
             <Route path="/rolling" element={<RollingPage />} />
             <Route path="/post" element={<PostPage />} />
             <Route path="/post/:id/message" element={<MessagePage />} /> */}
-            <Route path="/test-page" element={<TestPage />} />
-            <Route path="/rolling" element={<RollingPage />} />
-            <Route path="/toast-test-page" element={<ToastTestPage />} />
-          </Route>
-        </Routes>
-      </ToastProvider>
+          <Route path="/test-page" element={<TestPage />} />
+          <Route path="/rolling" element={<RollingPage />} />
+          <Route path="/toast-test-page" element={<ToastTestPage />} />
+        </Route>
+      </Routes>
     </>
   );
 }

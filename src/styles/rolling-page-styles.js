@@ -3,6 +3,8 @@ import { colors } from "@/styles/colors";
 import { font } from "@/styles/font";
 import ShareIcon from "@/assets/icons/share.svg";
 import media from "@/styles/media";
+import EditIcon from "@/assets/icons/plus.svg";
+import DeleteIcon from "@/assets/icons/deleted.svg";
 
 
 //최상단헤더 컨테이너
@@ -278,13 +280,6 @@ export const RollingHeaderArrowDown = styled.img`
 
 
 
-export const RollingPageContainer = styled.div`
-background-color: ${colors.blue[100]};
-width: 100%;
-margin: 0 auto;
-padding: 20px;
-height: 100vh;
-`;
 
 
 
@@ -304,3 +299,182 @@ export const PerpendicularLineFirst = styled(PerpendicularLine)`
 `;
 
 export const PerpendicularLineSecond = styled(PerpendicularLine)``;
+
+
+
+export const RollingPageContainer = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: ${colors.blue[100]};
+width: 100%;
+margin: 0 auto;
+padding: 20px;
+
+`;
+
+
+
+export const CardContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  gap: 20px;
+  ${media.medium`
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  `}
+  ${media.small`
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  `}
+`;
+
+export const Card = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 384px;
+  height: 280px;
+  border-radius: 16px;
+  background-color: #fff;
+  position: relative;
+`;
+
+export const CardEditButton = styled.button`
+  width: 56px;
+  height: 56px;
+  background-image: url("${EditIcon}");
+  background-color: ${colors.gray[500]};
+  border-radius: 100px;
+  border: none;
+  padding: 20px;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  &:hover {
+    background-color: ${colors.gray[400]};
+    color: ${colors.gray[100]};
+  }
+`;
+
+export const CardContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 16px 24px;
+`;
+
+export const CardContentStatus = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  gap: 14px;
+  border-bottom: 1px solid ${colors.gray[200]};
+  padding-bottom: 16px;
+`;
+
+export const CardContentStatusContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+`;
+
+export const CardContentStatusProfileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+`;
+
+export const CardContentFrom = styled.div`
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+export const CardContentStatusProfileImage = styled.img`
+  width: 56px;
+  height: 56px;
+  border-radius: 100px;
+  border: 1px solid ${colors.gray[300]};
+`;
+
+export const CardContentStatusProfileName = styled.div`
+  ${font.regular16}
+  color: ${colors.gray[900]};
+`;
+
+const relationshipColors = {
+  friend: colors.blue[100],
+  family: colors.green[100],
+  colleague: colors.purple[100],
+  acquaintance: colors.beige[100],
+};
+
+const relationshipTextColors = {
+  friend: colors.blue[500],
+  family: colors.green[500],
+  colleague: colors.purple[600],
+  acquaintance: colors.beige[500],
+};
+
+// const relationshipLabels = {
+//   friend: '친구',
+//   family: '가족',
+//   colleague: '동료',
+//   acquaintance: '지인',
+// };
+
+export const CardContentStatusRelationship = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  height: 20px;
+  border-radius: 4px;
+  ${font.regular14}
+  color: ${props => relationshipTextColors[props.$relationship] || colors.gray[500]};
+  
+  background-color: ${props => relationshipColors[props.$relationship] || colors.gray[500]};
+`;
+
+export const CardContentText = styled.div`
+  width: 100%;
+  height: 100%;
+  ${font.regular16}
+  color: ${colors.gray[600]};
+  padding-top: 16px;
+  cursor: pointer;
+`;
+
+export const CardContentDate = styled.div`
+  ${font.regular12}
+  color: ${colors.gray[400]};
+`;
+
+export const CardContentDeleteButton = styled.div`
+  width: 40px;
+  height: 40px;
+  background-image: url("${DeleteIcon}");
+  border-radius: 6px;
+  border: 1px solid ${colors.gray[300]};
+  padding: 20px;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+   &:hover {
+    background-color: ${colors.gray[200]};
+    color: ${colors.gray[100]};
+  }
+`;
