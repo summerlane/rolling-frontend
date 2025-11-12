@@ -7,6 +7,7 @@ const KAKAO_KEY = import.meta.env.VITE_KAKAO_KEY;
  * 책임: 카카오 SDK 스크립트 로드 및 초기화
  */
 export default function useKakaoSdk() {
+
     useEffect(() => {
         // 이미 SDK가 로드되어 있으면 초기화만 수행
         if (window.Kakao) {
@@ -31,7 +32,6 @@ export default function useKakaoSdk() {
 
         document.head.appendChild(script);
 
-        // 클린업 함수는 필요시 추가 (일반적으로는 SDK를 제거하지 않음)
     }, []);
 
     return {
