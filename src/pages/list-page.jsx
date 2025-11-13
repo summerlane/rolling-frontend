@@ -10,6 +10,7 @@ import {
 import { CardList } from "@/components/list/card-list";
 
 const UI_PAGE_SIZE = 4;
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 export default function ListPage() {
   const [likePaper, setLikePaper] = useState([]);
@@ -19,14 +20,10 @@ export default function ListPage() {
     const fetchRecipients = async () => {
       try {
         const likeData = await getRecipients({
-          limit: 4,
-          offset: 0,
-          sort: "like",
+          url: `${baseURL}/recipients/?sort=like`,
         });
         const recentData = await getRecipients({
-          limit: 4,
-          offset: 0,
-          sort: "",
+          url: `${baseURL}/recipients/`,
         });
         console.log("likeData:", likeData);
         setLikePaper(likeData.results);
