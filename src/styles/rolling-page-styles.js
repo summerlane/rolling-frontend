@@ -168,6 +168,9 @@ export const RollingHeaderImojiContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  ${media.small`
+    gap: 4px;
+  `}
 `;
 
 export const RollingHeaderImojiIconContainer = styled.div`
@@ -200,7 +203,11 @@ export const RollingHeaderImojiIcon = styled.div`
 
 export const RollingHeaderImojiText = styled.span`
   ${font.regular16}
-  color: rgba(255, 255, 255, 1)
+  color: rgba(255, 255, 255, 1);
+
+  ${media.small`
+    ${font.regular14}
+  `}
 `;
 
 export const RollingHeaderImojiEditButton = styled.button`
