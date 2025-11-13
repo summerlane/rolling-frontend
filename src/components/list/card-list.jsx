@@ -10,6 +10,8 @@ import {
   CardWrapper,
   CustomH3,
   EmojiWrapper,
+  WriterCountText,
+  ProfileCount,
 } from "@/styles/list-page-styles";
 
 export function CardList({ title, userList }) {
@@ -27,6 +29,7 @@ export function CardList({ title, userList }) {
               slidesPerView={4}
               slidesPerGroup={4}
               navigation
+              allowTouchMove={false}
               breakpoints={{
                 320: {
                   slidesPerView: 1,
@@ -57,13 +60,20 @@ export function CardList({ title, userList }) {
                       bg={it.backgroundColor}
                       bgImg={it.backgroundImageURL}
                     >
-                      <CustomH3>To. {it.name}</CustomH3>
-                      <CardImgWrapper>
-                        {it.recentMessages.map((it) => (
-                          <img src={it.profileImageURL} key={it.id} />
-                        ))}
-                      </CardImgWrapper>
-                      <p>{it.messageCount}명이 작성했어요!</p>
+                      <div>
+                        <CustomH3>To. {it.name}</CustomH3>
+                        <CardImgWrapper>
+                          {it.recentMessages.slice(0, 3).map((it) => (
+                            <img src={it.profileImageURL} key={it.id} />
+                          ))}
+                          {it.messageCount > 3 && (
+                            <ProfileCount>+{it.messageCount - 3}</ProfileCount>
+                          )}
+                        </CardImgWrapper>
+                        <WriterCountText>
+                          <span>{it.messageCount}</span>명이 작성했어요!
+                        </WriterCountText>
+                      </div>
                       <EmojiWrapper>
                         <EmojiDisplayList emojis={it.topReactions} />
                       </EmojiWrapper>
