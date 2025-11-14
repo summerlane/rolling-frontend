@@ -296,14 +296,13 @@ const RollingPageWrapper = ({ $backgroundcolor, $backgroundimage, ...rest }) => 
 export const RollingPageContainer = styled(RollingPageWrapper)`
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: ${(props) => props.$backgroundcolor || colors.blue[100]};
   background-image: ${(props) =>
     props.$backgroundimage ? `url(${props.$backgroundimage})` : "none"};
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 63px 216px 113px 216px;
   gap: 11px;
@@ -525,4 +524,30 @@ export const CardPageDeleteButton = styled.div`
   padding: 7px 16px;
   ${font.regular16}
   text-align: center;
+
+  ${media.medium`
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 768px;
+    height: 56px;
+    padding: 12px 16px;
+    z-index: 1003;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+  `}
+
+  ${media.small`
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 384px;
+    height: 56px;
+    padding: 12px 16px;
+    z-index: 1003;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+  `}
 `;

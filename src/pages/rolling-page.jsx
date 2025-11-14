@@ -29,7 +29,7 @@ export default function RollingPage() {
   const isEditMode = useEditMode();
 
   // API에서 수신자 데이터 가져오기
-  const { recipient, loading, error } = useRecipient(recipientId);
+  const { recipient, error } = useRecipient(recipientId);
 
   // 삭제 액션 훅
   const { handleDeleteRecipient } = useDeleteActions();
@@ -42,9 +42,6 @@ export default function RollingPage() {
     return <div>잘못된 페이지 주소입니다.</div>;
   }
 
-  if (loading) {
-    return <div>로딩 중123...</div>;
-  }
 
   if (error) {
     return <div>에러가 발생했습니다: {error}</div>;

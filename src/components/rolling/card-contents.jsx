@@ -29,7 +29,7 @@ import DeleteConfirmModal from "./delete-confirm-modal";
  */
 export default function CardContents({ recipientId, isEditMode = false }) {
     const navigate = useNavigate();
-    const { messages, loading, hasMore, fetchInitialData, fetchMoreData, refresh } =
+    const { messages, hasMore, fetchInitialData, fetchMoreData, refresh } =
         useInfiniteRecipientMessages(recipientId, isEditMode);
 
     // 삭제 액션 훅
@@ -105,13 +105,7 @@ export default function CardContents({ recipientId, isEditMode = false }) {
         지인: "acquaintance",
     };
 
-    if (loading && messages.length === 0) {
-        return (
-            <CardContainer>
-                <div>로딩 중...</div>
-            </CardContainer>
-        );
-    }
+
 
     return (
         <>
@@ -119,7 +113,6 @@ export default function CardContents({ recipientId, isEditMode = false }) {
                 dataLength={messages.length}
                 next={fetchMoreData}
                 hasMore={hasMore}
-                loader={<h4>로딩 중...</h4>}
                 endMessage={
                     <p style={{ textAlign: "center", marginTop: "20px" }}>
                         <b>모든 메시지를 확인했습니다</b>
