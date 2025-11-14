@@ -73,7 +73,7 @@ export function ToastProvider({ children }) {
               </Toast>
             )}
           </>,
-          toastContainer
+          toastContainer,
         )}
     </ToastContext.Provider>
   );

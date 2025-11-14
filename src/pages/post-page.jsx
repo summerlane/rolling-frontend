@@ -198,9 +198,7 @@ export default function PostPage() {
       </InputSection>
       <ToggleSection>
         <ToggleTitle>배경화면을 선택해 주세요.</ToggleTitle>
-        <ToggleTitleSmall>
-          컬러를 선택하거나, 이미지를 선택할 수 있습니다.
-        </ToggleTitleSmall>
+        <ToggleTitleSmall>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</ToggleTitleSmall>
         <ToggleButtonContainer>
           <ToggleButton>컬러</ToggleButton>
           <ToggleButtonDisable>이미지</ToggleButtonDisable>

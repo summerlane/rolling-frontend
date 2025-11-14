@@ -18,7 +18,11 @@ function App() {
           <Route path="/" element={<TempPage />} />
           <Route path="/main" element={<MainPage />} />
           {/* <Route path="/list" element={<ListPage />} /> */}
-          <Route path="/rolling" element={<RollingPage />} />
+
+          {/* 롤링 페이퍼 뷰어/편집 모드 */}
+          <Route path="/post/:id" element={<RollingPage />} />
+          <Route path="/post/:id/edit" element={<RollingPage />} />
+
           <Route path="/post" element={<PostPage />} />
           <Route path="/message-page" element={<MessagePage />} />
           <Route path="/test-page" element={<TestPage />} />

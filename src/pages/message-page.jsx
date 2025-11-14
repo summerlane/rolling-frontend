@@ -102,7 +102,9 @@ export const SelectableImageItem = styled.li`
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0; /* 크기 고정 */
-  transition: transform 0.2s, border 0.2s;
+  transition:
+    transform 0.2s,
+    border 0.2s;
 
   border: 2px solid transparent;
   ${({ isSelected }) =>
@@ -177,11 +179,7 @@ function MessagePage() {
         {/* From. 입력 필드 */}
         <FormField>
           <FormLabel htmlFor="fromInput">From.</FormLabel>
-          <InputField
-            id="fromInput"
-            name="from"
-            placeholder="이름을 입력해 주세요."
-          />
+          <InputField id="fromInput" name="from" placeholder="이름을 입력해 주세요." />
           {/* 에러 메시지 표시 */}
           {hasError && <ErrorMessage>"값을 입력해 주세요."</ErrorMessage>}
         </FormField>
@@ -195,10 +193,7 @@ function MessagePage() {
 
             <SelectableImagesList>
               {selectableImages.map((image) => (
-                <SelectableImageItem
-                  key={image.id}
-                  isSelected={image.isSelected}
-                >
+                <SelectableImageItem key={image.id} isSelected={image.isSelected}>
                   <img src={image.url} alt={`프로필 ${image.id}`} />
                 </SelectableImageItem>
               ))}
@@ -209,11 +204,7 @@ function MessagePage() {
         {/* 상대와의 관계 드롭다운*/}
         <FormField>
           <FormLabel htmlFor="relationshipSelect">상대와의 관계</FormLabel>
-          <SelectField
-            id="relationshipSelect"
-            name="relationship"
-            defaultValue="지인"
-          >
+          <SelectField id="relationshipSelect" name="relationship" defaultValue="지인">
             <option value="지인">지인</option>
             <option value="친구">친구</option>
             <option value="동료">동료</option>

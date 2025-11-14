@@ -37,8 +37,7 @@ const ToastStyle = styled.div`
   color: white;
   padding: 19px 30px;
   border-radius: 8px;
-  animation: ${({ $isClosing }) => ($isClosing ? fadeOut : fadeIn)} 0.3s
-    ease-in-out forwards;
+  animation: ${({ $isClosing }) => ($isClosing ? fadeOut : fadeIn)} 0.3s ease-in-out forwards;
   ${font.regular16}
 
   button {

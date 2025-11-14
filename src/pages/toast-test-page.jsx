@@ -15,12 +15,8 @@ export default function ToastTestPage() {
   return (
     <Container>
       <h1>Toast 테스트 페이지 (5초 후 자동 사라짐)</h1>
-      <Button onClick={() => toast.success("URL이 복사 되었습니다.")}>
-        Completed Toast
-      </Button>
-      <Button onClick={() => toast.delete("삭제 되었습니다.")}>
-        Delete Toast
-      </Button>
+      <Button onClick={() => toast.success("URL이 복사 되었습니다.")}>Completed Toast</Button>
+      <Button onClick={() => toast.delete("삭제 되었습니다.")}>Delete Toast</Button>
     </Container>
   );
 }

@@ -15,8 +15,7 @@ export const GlobalStyle = createGlobalStyle`${css`
   }
 
   :root {
-    --font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
-      Roboto, sans-serif;
+    --font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   }
 
   body {

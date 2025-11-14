@@ -1,3 +1,5 @@
+import React from "react";
+
 import styled from "styled-components";
 import { colors } from "@/styles/colors";
 import { font } from "@/styles/font";
@@ -6,24 +8,22 @@ import media from "@/styles/media";
 import EditIcon from "@/assets/icons/plus.svg";
 import DeleteIcon from "@/assets/icons/deleted.svg";
 
-
 //최상단헤더 컨테이너
-export const RollingHeaderContainer = styled.div` 
+export const RollingHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 1200px;
   margin: 0 auto;
-  padding: 13px 20px;
   height: 68px;
   background-color: rgba(255, 255, 255, 1);
   gap: 20px;
-  
+
   ${media.large`
     width: 1200px;
     height: 68px;
     margin: 0 auto;
-    padding: 13px 20px;
+    padding: 13px 0px;
 
     gap: 20px;
   `}
@@ -40,15 +40,14 @@ export const RollingHeaderContainer = styled.div`
   ${media.small`
     flex-direction: column;
     align-items: center;
+    
     height: auto;
     width: 100%;
     padding: 0px;
     gap: 0px;
-
+   
   `}
-
 `;
-
 
 //유저 정보 컨테이너 TO. Ashley Kim
 export const RollingHeaderUserInfo = styled.div`
@@ -61,7 +60,7 @@ export const RollingHeaderUserInfo = styled.div`
   ${font.bold28}
   color: ${colors.gray[800]};
   flex-shrink: 0;
-   
+
   ${media.medium`
     min-width: 150px;
     height: 42px;
@@ -78,7 +77,6 @@ export const RollingHeaderUserInfo = styled.div`
     border-bottom: 1px solid ${colors.gray[200]};
   `}
 `;
-
 
 export const RollingHeaderRightContainer = styled.div`
   display: flex;
@@ -100,19 +98,15 @@ export const RollingHeaderRightContainer = styled.div`
     
 
   `}
-
-
 `;
-
-
 
 //유저 이미지 컨테이너 프로필 사진들과, 몇명이 작성중인지 표시
 export const RollingHeaderUserPeopleContainer = styled.div`
   width: 228px;
   display: flex;
   align-items: center;
- 
-    ${media.medium`
+
+  ${media.medium`
     display: none;
   `}
 
@@ -129,7 +123,7 @@ export const RollingHeaderUserPeopleImages = styled.div`
   position: relative;
 
   cursor: pointer;
-    ${media.medium`
+  ${media.medium`
     
     display: none;
   `}
@@ -138,7 +132,6 @@ export const RollingHeaderUserPeopleImages = styled.div`
    
     display: none;
   `}
-
 `;
 
 export const RollingHeaderUserPeopleImage = styled.img`
@@ -160,7 +153,7 @@ export const RollingHeaderUserPeopleState = styled.div`
   ${font.bold18}
   color: ${colors.gray[900]};
   text-align: center;
-    ${media.medium`
+  ${media.medium`
     
     display: none;
   `}
@@ -171,14 +164,13 @@ export const RollingHeaderUserPeopleState = styled.div`
 `;
 
 //이모지 컨테이너 드롭박스 포함, 추가 버튼 포함
-export const RollingHeaderImojiContainer = styled.div`
+export const RollingHeaderEmojiContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-
 `;
 
-export const RollingHeaderImojiIconContainer = styled.div`
+export const RollingHeaderEmojiIconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,16 +180,14 @@ export const RollingHeaderImojiIconContainer = styled.div`
   text-align: center;
   border-radius: 32px;
   background: rgba(153, 153, 153, 1);
-  gap: 2px;
+  gap: 6px;
 
   ${media.small`
-    padding: 4px 8px;
+    padding: 6px 10px;
   `}
-
 `;
 
-export const RollingHeaderImojiIcon = styled.div`
-  
+export const RollingHeaderEmojiIcon = styled.div`
   width: 24px;
   height: 24px;
   color: rgba(255, 255, 255, 1);
@@ -205,20 +195,20 @@ export const RollingHeaderImojiIcon = styled.div`
   ${media.small`
     width: 20px;
     height: 24px;
+    
   `}
-
 `;
 
-export const RollingHeaderImojiText = styled.span`
+export const RollingHeaderEmojiText = styled.span`
   ${font.regular16}
   color: rgba(255, 255, 255, 1)
 `;
 
-export const RollingHeaderImojiEditButton = styled.button`
+export const RollingHeaderEmojiEditButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 4px;
   width: 88px;
   height: 36px;
   border-radius: 6px;
@@ -229,20 +219,23 @@ export const RollingHeaderImojiEditButton = styled.button`
     width: 36px;
     height: 32px;
   `}
+  &:hover {
+    background-color: ${colors.gray[100]};
+  }
 `;
 
-export const RollingHeaderImojiEditButtonContainer = styled.div`
+export const RollingHeaderEmojiEditButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
 `;
 
-export const RollingHeaderImojiEditButtonIcon = styled.img`
+export const RollingHeaderEmojiEditButtonIcon = styled.img`
   width: 20px;
   height: 20px;
 `;
 
-export const RollingHeaderImojiEditButtonText = styled.span`
+export const RollingHeaderEmojiEditButtonText = styled.span`
   ${font.regular16}
   color: ${colors.gray[900]};
   ${media.small`
@@ -261,6 +254,9 @@ export const RollingHeaderLinkShareButton = styled.div`
   padding: 12px 32px;
   cursor: pointer;
   border: 1px solid ${colors.gray[300]};
+  &:hover {
+    background-color: ${colors.gray[100]};
+  }
   ${media.small`
     width: 36px;
     height: 32px;
@@ -268,7 +264,6 @@ export const RollingHeaderLinkShareButton = styled.div`
       padding: 8px 8px;
 
   `}
-
 `;
 
 export const RollingHeaderArrowDown = styled.img`
@@ -276,12 +271,6 @@ export const RollingHeaderArrowDown = styled.img`
   height: 24px;
   cursor: pointer;
 `;
-
-
-
-
-
-
 
 export const PerpendicularLine = styled.div`
   border-left: 1px solid ${colors.gray[200]};
@@ -301,22 +290,59 @@ export const PerpendicularLineFirst = styled(PerpendicularLine)`
 export const PerpendicularLineSecond = styled(PerpendicularLine)``;
 
 
+const RollingPageWrapper = ({ $backgroundcolor, $backgroundimage, ...rest }) => {
+  return React.createElement('div', { $backgroundcolor, $backgroundimage, ...rest });
+};
+export const RollingPageContainer = styled(RollingPageWrapper)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.$backgroundcolor || colors.blue[100]};
+  background-image: ${(props) =>
+    props.$backgroundimage ? `url(${props.$backgroundimage})` : "none"};
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 63px 216px 113px 216px;
+  gap: 11px;
 
-export const RollingPageContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: ${colors.blue[100]};
-width: 100%;
-margin: 0 auto;
-padding: 20px;
 
+  ${media.medium`
+    padding: 5% 2%;
+  `}
+
+  ${media.small`
+    padding: 63px 20px 113px 20px;
+  `}
 `;
 
 
 
+export const CardContainerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  & > :first-child {
+    align-self: flex-end;
+  }
+
+  ${media.medium`
+    gap: 7px;
+    width: 100%;
+  `}
+
+  ${media.small`
+    gap: 4px;
+  `}
+`;
+
 export const CardContainer = styled.div`
   display: grid;
+  width: 100%;
+  height: 100%;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
 
@@ -324,10 +350,13 @@ export const CardContainer = styled.div`
   ${media.medium`
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    gap: 16px;
   `}
   ${media.small`
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(6, 1fr);
+    gap: 16px;
+
   `}
 `;
 
@@ -340,6 +369,15 @@ export const Card = styled.div`
   border-radius: 16px;
   background-color: #fff;
   position: relative;
+
+  ${media.medium`
+    width: 100%;
+    height: auto;
+  `}
+
+  ${media.small`
+    width: 100%;
+    `}
 `;
 
 export const CardEditButton = styled.button`
@@ -394,7 +432,6 @@ export const CardContentStatusProfileContainer = styled.div`
 `;
 
 export const CardContentFrom = styled.div`
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -428,12 +465,7 @@ const relationshipTextColors = {
   acquaintance: colors.beige[500],
 };
 
-// const relationshipLabels = {
-//   friend: '친구',
-//   family: '가족',
-//   colleague: '동료',
-//   acquaintance: '지인',
-// };
+
 
 export const CardContentStatusRelationship = styled.div`
   display: inline-flex;
@@ -443,9 +475,9 @@ export const CardContentStatusRelationship = styled.div`
   height: 20px;
   border-radius: 4px;
   ${font.regular14}
-  color: ${props => relationshipTextColors[props.$relationship] || colors.gray[500]};
-  
-  background-color: ${props => relationshipColors[props.$relationship] || colors.gray[500]};
+  color: ${(props) => relationshipTextColors[props.$relationship] || colors.gray[500]};
+
+  background-color: ${(props) => relationshipColors[props.$relationship] || colors.gray[500]};
 `;
 
 export const CardContentText = styled.div`
@@ -473,8 +505,24 @@ export const CardContentDeleteButton = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-   &:hover {
+  &:hover {
     background-color: ${colors.gray[200]};
     color: ${colors.gray[100]};
   }
+`;
+
+export const CardPageDeleteButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 92px;
+  height: 39px;
+  border-radius: 6px;
+  border: 1px solid ${colors.gray[300]};
+  background-color: ${colors.purple[600]};
+  cursor: pointer;
+  color: #fff;
+  padding: 7px 16px;
+  ${font.regular16}
+  text-align: center;
 `;

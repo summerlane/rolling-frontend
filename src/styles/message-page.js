@@ -91,8 +91,7 @@ export const SelectableImageItem = styled.li`
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid
-    ${(props) => (props.isSelected ? COLOR_PRIMARY : "transparent")};
+  border: 2px solid ${(props) => (props.isSelected ? COLOR_PRIMARY : "transparent")};
   transition: border 0.2s;
 
   & img {
