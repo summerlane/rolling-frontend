@@ -15,8 +15,17 @@ import {
   Title,
   ReceiverName,
 } from "@/styles/list-page-styles";
+import { useNavigate } from "react-router";
 
 export function CardList({ title, userList, onLoadMore }) {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    if (userList) {
+      navigate("/rolling");
+    }
+  };
+
   return (
     <>
       <CardListLayout>
@@ -42,6 +51,10 @@ export function CardList({ title, userList, onLoadMore }) {
               slidesOffsetBefore={20}
               slidesOffsetAfter={20}
               breakpoints={{
+                600: {
+                  slidesOffsetBefore: 24,
+                  slidesOffsetAfter: 24,
+                },
                 1024: {
                   slidesPerView: 3,
                   slidesPerGroup: 3,
@@ -62,22 +75,26 @@ export function CardList({ title, userList, onLoadMore }) {
             >
               {userList.map((it) => {
                 return (
-                  <SwiperSlide key={it.id}>
+                  <SwiperSlide key={it.id} onClick={handleCardClick}>
                     <CardWrapper
-                      bg={it.backgroundColor}
-                      bgImg={it.backgroundImageURL}
+                      $bg={it.backgroundColor}
+                      $bgImg={it.backgroundImageURL}
                     >
                       <div>
-                        <ReceiverName>To. {it.name}</ReceiverName>
+                        <ReceiverName $bgImg={it.backgroundImageURL}>
+                          To. {it.name}
+                        </ReceiverName>
                         <CardImgWrapper>
+                          {/* 프로필 이미지 map */}
                           {it.recentMessages.slice(0, 3).map((it) => (
                             <img src={it.profileImageURL} key={it.id} />
                           ))}
                           {it.messageCount > 3 && (
                             <ProfileCount>+{it.messageCount - 3}</ProfileCount>
                           )}
+                          {/* -------------- */}
                         </CardImgWrapper>
-                        <WriterCountText>
+                        <WriterCountText $bgImg={it.backgroundImageURL}>
                           <span>{it.messageCount}</span>명이 작성했어요!
                         </WriterCountText>
                       </div>

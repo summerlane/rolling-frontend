@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "@/components/common/button";
+import { Link } from "react-router";
 import { RollingHeaderImojiContainer } from "@/styles/rolling-page-styles";
 import { font } from "@/styles/font";
 import { colors } from "@/styles/colors";
@@ -11,15 +12,33 @@ export const PageContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const BottomWrapper = styled.div`
+export const ButtonLink = styled(Link)`
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 24px 0;
   margin-top: 40px;
+
+  ${media.medium`
+    padding: 24px;
+  `}
+
+  ${media.small`
+    padding: 24px 20px;
+  `}
 `;
 
 export const CustomButton = styled(Button)`
   padding: 14px 60px;
+
+  ${media.medium`
+    width: 100%;
+  `}
+
+  ${media.small`
+    width: 100%;
+  `}
 `;
 
 // card-list 비었을 때
@@ -54,6 +73,14 @@ export const Title = styled.h3`
 
 export const ReceiverName = styled.h3`
   ${font.bold24};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  color: ${(props) => {
+    return props.$bgImg ? "white" : "black";
+  }};
+
   ${media.small`
     ${font.bold18};
   `}
@@ -65,7 +92,7 @@ export const CardListLayout = styled.div`
   justify-content: center;
   align-items: start;
   margin-top: 50px;
-  padding: 0 20px;
+  padding: 0 24px;
 
   ${media.small`
     padding: 0;
@@ -142,23 +169,35 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: ${(props) => {
-    if (props.bgImg) return "transparent";
-    if (props.bg) return props.bg;
+
+  // 배경 color일 때 적용(이미지 같이 내려올 시, 이미지 우선)
+  background-color: ${(props) => {
+    if (props.$bgImg) return "transparent";
+    if (props.$bg) {
+      if (props.$bg === "beige") return `${colors.beige[200]}`;
+      if (props.$bg === "purple") return `${colors.purple[200]}`;
+      if (props.$bg === "blue") return `${colors.blue[200]}`;
+      if (props.$bg === "green") return `${colors.green[200]}`;
+    }
     return "#ffffff";
   }};
+
+  // 배경 이미지, null이면 color 적용
   background-image: ${(props) => {
-    if (props.bgImg) return `url(${props.bgImg})`;
+    if (props.$bgImg) {
+      return `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${props.$bgImg})`;
+    }
     return "none";
   }};
+
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; */
-  background-color: ${colors.purple[200]};
+  background-size: cover;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
   padding: 30px 24px 20px;
+  cursor: pointer;
 `;
 
 export const CardImgWrapper = styled.div`
@@ -189,9 +228,12 @@ export const ProfileCount = styled.div`
 
 export const WriterCountText = styled.div`
   margin-top: 12px;
-  ${font.regular16}
 
-  span {
+  color: ${(props) => {
+    return props.$bgImg ? "white" : "black";
+  }};
+
+  ${font.regular16} span {
     ${font.bold16}
   }
 `;

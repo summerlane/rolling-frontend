@@ -1,9 +1,8 @@
-import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { getRecipients } from "@/api/list-user-api";
 
 import {
-  BottomWrapper,
+  ButtonLink,
   CustomButton,
   PageContainer,
 } from "@/styles/list-page-styles";
@@ -63,11 +62,9 @@ export default function ListPage() {
         userList={recentPaper}
         onLoadMore={fetchMoreRecent}
       />
-      <BottomWrapper>
-        <Link to="/post">
-          <CustomButton size="large">나도 만들어보기</CustomButton>
-        </Link>
-      </BottomWrapper>
+      <ButtonLink to="/post">
+        <CustomButton size="large">나도 만들어보기</CustomButton>
+      </ButtonLink>
     </PageContainer>
   );
 }
