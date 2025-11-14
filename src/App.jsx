@@ -17,13 +17,13 @@ function App() {
       <Routes>
         <Route element={<GlobalLayout />}>
           <Route path="/" element={<TempPage />} />
-          <Route path="/main" element={<MainPage />} />
+          {/*<Route path="/main" element={<MainPage />} />
           <Route path="/list" element={<ListPage />} />
           <Route path="/rolling" element={<RollingPage />} />
-          <Route path="/post" element={<PostPage />} />
-          <Route path="/message" element={<MessagePage />} />
-          <Route path="/test" element={<TestPage />} />
-          <Route path="/toast-test" element={<ToastTestPage />} />
+          <Route path="/post" element={<PostPage />} /> */}
+          <Route path="/message-page" element={<MessagePage />} />
+          <Route path="/test-page" element={<TestPage />} />
+          <Route path="/toast-test-page" element={<ToastTestPage />} />
         </Route>
       </Routes>
     </>
