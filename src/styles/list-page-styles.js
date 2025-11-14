@@ -157,7 +157,18 @@ export const SwiperWrapper = styled.div`
     left: -20px;
   }
 
-  .swiper-button-disabled {
+  .swiper-button-prev.swiper-button-disabled {
+    opacity: 0;
+    cursor: none;
+  }
+
+  .swiper-button-next.swiper-button-disabled {
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  &.end-of-list .swiper-button-next.swiper-button-disabled {
     opacity: 0;
     cursor: none;
   }

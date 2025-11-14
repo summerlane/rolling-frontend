@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { useNavigate } from "react-router";
 import "swiper/css";
 import "swiper/css/navigation";
 import EmojiDisplayList from "@/components/rolling/emoji-display-list";
@@ -15,15 +16,18 @@ import {
   Title,
   ReceiverName,
 } from "@/styles/list-page-styles";
-import { useNavigate } from "react-router";
 
-export function CardList({ title, userList, onLoadMore }) {
+export function CardList({ title, userList, onLoadMore, nextCheck }) {
+  const isDesktop = window.innerWidth >= 1024;
   const navigate = useNavigate();
 
-  const handleCardClick = () => {
-    if (userList) {
-      navigate("/rolling");
-    }
+  const handleCardClick = (id) => {
+    navigate(`/rolling/${id}`);
+  };
+
+  const handleLoadMore = async () => {
+    if (!onLoadMore || !nextCheck) return;
+    await onLoadMore();
   };
 
   return (
@@ -37,14 +41,23 @@ export function CardList({ title, userList, onLoadMore }) {
             새로운 롤링 페이퍼를 만들어 보세요!
           </EmptySection>
         ) : (
-          <SwiperWrapper>
+          <SwiperWrapper className={nextCheck ? "" : "end-of-list"}>
             <Swiper
               modules={[Navigation]}
               onReachEnd={() => {
-                if (onLoadMore) onLoadMore();
+                if (!isDesktop) return;
+                handleLoadMore();
+              }}
+              onSlideChange={(swiper) => {
+                if (isDesktop) return;
+                const current = swiper.activeIndex;
+                const last = swiper.slides.length - 1;
+                if (current >= last - 2) {
+                  handleLoadMore();
+                }
               }}
               navigation={true}
-              allowTouchMove={true}
+              allowTouchMove={!isDesktop}
               slidesPerView="auto"
               slidesPerGroup={1}
               spaceBetween={12}
@@ -75,7 +88,10 @@ export function CardList({ title, userList, onLoadMore }) {
             >
               {userList.map((it) => {
                 return (
-                  <SwiperSlide key={it.id} onClick={handleCardClick}>
+                  <SwiperSlide
+                    key={it.id}
+                    onClick={() => handleCardClick(it.id)}
+                  >
                     <CardWrapper
                       $bg={it.backgroundColor}
                       $bgImg={it.backgroundImageURL}
