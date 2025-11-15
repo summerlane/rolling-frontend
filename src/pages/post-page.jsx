@@ -4,6 +4,8 @@ import { font } from "@/styles/font";
 import media from "@/styles/media";
 import Toggle from "@/components/common/toggle";
 import { useState } from "react";
+import Button from "@/components/common/button";
+import axios from "axios";
 
 const Container = styled.div`
   max-width: 720px;
@@ -50,47 +52,96 @@ const Input = styled.input`
   padding: 12px 16px;
 `;
 
-const Button = styled.button`
+const CustomButton = styled(Button)`
   width: 100%;
   height: 56px;
-  ${font.bold18};
-  background-color: ${colors.purple[600]};
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  border-radius: 12px;
-  border: 0;
-  cursor: pointer;
-
-  ${media.small`
-    width: 100%;
-  `}
-
-  ${media.medium`
-    width: 100%;
-  `}
 `;
 
 export default function PostPage() {
   const [name, setName] = useState("");
+  const [buttonActive, setButtonActive] = useState(false);
+
+  const bgColors = [
+    colors.beige[200],
+    colors.purple[200],
+    colors.blue[200],
+    colors.green[200],
+  ];
+
+  const [isSelectDiv, setIsSelectDiv] = useState(bgColors[0]);
+  const [isSelectImg, setIsSelectImg] = useState(null);
 
   const handleInputName = (e) => {
     setName(e.target.value);
+
+    setButtonActive(e.target.value.length > 0 ? true : false);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const colorChangeToString = () => {
+      if (isSelectDiv === "#FFE2AD") {
+        return "beige";
+      }
+
+      if (isSelectDiv === "#ECD9FF") {
+        return "purple";
+      }
+
+      if (isSelectDiv === "#B1E4FF") {
+        return "blue";
+      }
+
+      if (isSelectDiv === "#D0F5C3") {
+        return "green";
+      }
+    };
+
+    axios
+      .post("https://rolling-api.vercel.app/20-1/recipients/", {
+        name: name,
+        backgroundColor: colorChangeToString(),
+        backgroundImageURL: isSelectImg,
+      })
+      .then((response) => {
+        console.log(response.data);
+        alert("전송을 성공하였습니다.");
+      })
+      .catch((error) => {
+        console.error("전송에 실패하였습니다.", error);
+      });
+
+    setName("");
+  };
+
   return (
-    <Container>
-      <InputSection>
-        <InputSectionTitle>To.</InputSectionTitle>
-        <Input
-          value={name}
-          onChange={handleInputName}
-          placeholder="받는 사람 이름을 입력해 주세요"
+    <form onSubmit={handleSubmit}>
+      <Container>
+        <InputSection>
+          <InputSectionTitle>To.</InputSectionTitle>
+          <Input
+            value={name}
+            onChange={handleInputName}
+            placeholder="받는 사람 이름을 입력해 주세요"
+          />
+        </InputSection>
+        <Toggle
+          bgColors={bgColors}
+          isSelectDiv={isSelectDiv}
+          setIsSelectDiv={setIsSelectDiv}
+          isSelectImg={isSelectImg}
+          setIsSelectImg={setIsSelectImg}
         />
-      </InputSection>
-      <Toggle />
-      <Button>생성하기</Button>
-    </Container>
+        <CustomButton
+          variant="primary"
+          size="large"
+          disabled={!buttonActive}
+          type="submit"
+        >
+          생성하기
+        </CustomButton>
+      </Container>
+    </form>
   );
 }

@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { colors } from "@/styles/colors";
 import { font } from "@/styles/font";
 import media from "@/styles/media";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ToggleSection = styled.div`
   width: 100%;
@@ -79,6 +80,11 @@ const ToggleDiv = styled.div`
   border-radius: 16px;
   background-color: ${(props) => props.$bgColor};
   cursor: pointer;
+  background-image: ${(props) =>
+    props.$active ? "url(./src/assets/images/select-circle.webp)" : null};
+  background-repeat: no-repeat;
+  background-size: 44px 44px;
+  background-position: center;
 
   ${media.small`
     flex: 1 1 40%; 
@@ -86,7 +92,7 @@ const ToggleDiv = styled.div`
 
   ${media.medium`
     flex: 1 1 40%;
-  `}
+  `};
 `;
 
 const ToggleImgContainer = styled.div`
@@ -102,9 +108,13 @@ const ToggleImg = styled.div`
   height: 168px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
-  background-image: url(./src/assets/images/img-car.webp);
+  background-image: ${(props) =>
+      props.$active
+        ? "url(./src/assets/images/select-circle.webp)"
+        : "url(${$bgImgs})"},
+    url(${(props) => props.$bgImgs});
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 44px 44px, 180%;
   background-position: center;
   cursor: pointer;
 
@@ -126,12 +136,52 @@ const ImgSelect = styled.div`
   background-position: center;
 `;
 
-export default function Toggle() {
+export default function Toggle({
+  bgColors,
+  isSelectDiv,
+  setIsSelectDiv,
+  isSelectImg,
+  setIsSelectImg,
+}) {
+  // const bgColors = [
+  //   colors.beige[200],
+  //   colors.purple[200],
+  //   colors.blue[200],
+  //   colors.green[200],
+  // ];
+
+  const [imgs, setImgs] = useState([]);
   const [toggle, setToggle] = useState(false);
+  // const [isSelectDiv, setIsSelectDiv] = useState(bgColors[0]);
+  // const [isSelectImg, setIsSelectImg] = useState(imgs[0]);
+
+  useEffect(() => {
+    axios
+      .get("https://rolling-api.vercel.app/background-images/")
+      .then((response) => {
+        setImgs(response.data.imageUrls);
+
+        if (response.data.imageUrls.length > 0) {
+          setIsSelectImg(response.data.imageUrls[0]);
+        }
+      })
+      .catch((error) => {
+        console.error("배경 이미지 가져오기에 실패했습니다.", error);
+      });
+  }, [setIsSelectImg]);
 
   const handleToggle = () => {
     setToggle(!toggle);
   };
+
+  const handleClickDiv = (bgColor) => {
+    setIsSelectDiv(bgColor);
+  };
+
+  const handleClickImg = (bgImg) => {
+    setIsSelectImg(bgImg);
+  };
+
   return (
     <>
       <ToggleSection>
@@ -145,21 +195,27 @@ export default function Toggle() {
         </ToggleButtonContainer>
         {toggle === false ? (
           <ToggleDivContainer>
-            <ToggleDiv $bgColor={colors.beige[200]}>
-              <ImgSelect></ImgSelect>
-            </ToggleDiv>
-            <ToggleDiv $bgColor={colors.purple[200]}></ToggleDiv>
-            <ToggleDiv $bgColor={colors.blue[200]}></ToggleDiv>
-            <ToggleDiv $bgColor={colors.green[200]}></ToggleDiv>
+            {bgColors.map((bgColor) => (
+              <ToggleDiv
+                key={bgColor}
+                onClick={() => handleClickDiv(bgColor)}
+                $active={isSelectDiv === bgColor}
+                $bgColor={bgColor}
+              />
+            ))}
           </ToggleDivContainer>
         ) : (
           <ToggleImgContainer>
-            <ToggleImg>
-              <ImgSelect></ImgSelect>
-            </ToggleImg>
-            <ToggleImg></ToggleImg>
-            <ToggleImg></ToggleImg>
-            <ToggleImg></ToggleImg>
+            {imgs.map((bgImg) => (
+              <ToggleImg
+                key={bgImg}
+                onClick={() => handleClickImg(bgImg)}
+                $active={isSelectImg === bgImg}
+                $bgImgs={bgImg}
+              />
+            ))}
+            {/* <ToggleImg>{isSelectImg === 1 && <ImgSelect />}</ToggleImg>
+            <ToggleImg $active={isSelectImg === 1} /> */}
           </ToggleImgContainer>
         )}
       </ToggleSection>
