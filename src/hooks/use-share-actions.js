@@ -22,7 +22,7 @@ export default function useShareActions() {
         return false;
       }
     },
-    [showToast],
+    [showToast]
   );
 
   /**
@@ -46,7 +46,7 @@ export default function useShareActions() {
         return false;
       }
     },
-    [showToast],
+    [showToast]
   );
 
   return {

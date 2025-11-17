@@ -1,29 +1,40 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { colors } from "@/styles/colors";
+import { font } from "@/styles/font";
+import Button from "@/components/common/button";
+import DropDown from "@/components/message/drop-down";
+import FromInput from "@/components/message/from-input";
+import { useMessageForm } from "@/hooks/use-message-form";
+import RichTextEditor from "@/components/message/reach-text-editor";
 
-const DEFAULT_ICON_URL = "/assets/default-user.svg";
-const TEMP_IMAGE_URL = "/assets/temp-profile.jpg";
+import ProfileImageSelector from "@/components/message/profile-image-selector";
 
-const selectableImages = [
-  { id: 1, url: TEMP_IMAGE_URL, isSelected: true },
-  { id: 2, url: TEMP_IMAGE_URL, isSelected: false },
-  { id: 3, url: TEMP_IMAGE_URL, isSelected: false },
-  { id: 4, url: TEMP_IMAGE_URL, isSelected: false },
-  { id: 5, url: TEMP_IMAGE_URL, isSelected: false },
-  { id: 6, url: TEMP_IMAGE_URL, isSelected: false },
-  { id: 7, url: TEMP_IMAGE_URL, isSelected: false },
-];
+export const FormInputStyle = css`
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid ${colors.gray[300]};
+  ${font.regular16};
+  outline: none;
+  ${colors.gray[900]};
+  background-color: #fff;
+
+  &:focus {
+    border-color: ${colors.gray[500]};
+  }
+`;
 
 export const PageContainer = styled.div`
   max-width: 720px;
   margin: 0 auto;
-  padding: 60px 24px;
+  padding: 47px 24px 60px 24px;
 `;
 
 export const MessageFormBox = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
 `;
 
 export const FormField = styled.div`
@@ -33,206 +44,118 @@ export const FormField = styled.div`
 `;
 
 export const FormLabel = styled.label`
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 26px; /* 162.5% */
-  color: #181818;
+  ${font.bold24}
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  ${colors.gray[900]};
+  margin: 0;
+  padding: 0;
 `;
 
 export const InputField = styled.input`
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  outline: none;
+  ${FormInputStyle}
 
   &:focus {
-    border-color: #555;
+    border-color: ${colors.gray[500]};
   }
 `;
 
 export const ErrorMessage = styled.p`
-  color: #dc3545; /* 빨간색 계열 */
+  color: ${colors.error};
   font-size: 14px;
-  margin-top: -8px; /* 위쪽 갭 조정 */
+  margin-top: -8px;
 `;
 
-export const ProfileWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
-export const ProfileSelectorContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 32px;
-`;
-
-export const ProfileDefaultBox = styled.div`
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0; /* 크기 고정 */
-  border: 1px solid #ccc;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-export const SelectableImagesList = styled.ul`
-  display: flex;
-  gap: 4px;
-  overflow-x: auto;
-  padding: 4px 0; /* 스크롤바를 위한 패딩 */
-  -webkit-overflow-scrolling: touch; /* iOS에서 부드러운 스크롤 */
-  list-style: none;
-  margin: 0;
-`;
-
-export const SelectableImageItem = styled.li`
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
-  cursor: pointer;
-  flex-shrink: 0; /* 크기 고정 */
-  transition:
-    transform 0.2s,
-    border 0.2s;
-
-  border: 2px solid transparent;
-  ${({ isSelected }) =>
-    isSelected &&
-    css`
-      border-color: #3f60ff; /* 선택된 이미지 하이라이트 색상 */
-      transform: scale(1.05);
-    `}
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-export const SelectField = styled.select`
+const FullWidthButton = styled(Button)`
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  background-color: #fff;
-  appearance: none; /* 기본 드롭다운 화살표 숨기기 */
-  outline: none;
-`;
-
-export const EditorPlaceholder = styled.div`
-  min-height: 200px;
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  font-size: 16px;
-  color: #777;
-`;
-
-export const SubmitButton = styled.button`
-  width: 100%;
-  padding: 14px 0;
   margin-top: 20px;
-  border-radius: 12px;
-  background-color: #3f60ff; /* Primary Color */
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-
-  &:not(:disabled):hover {
-    background-color: #2e4bc0;
-  }
 `;
 
 function MessagePage() {
-  const isFormValid = false;
-  const hasError = true;
+  const {
+    fromInput,
+    relationshipDropdown,
+    fontDropdown,
+    editorContent,
+    setEditorContent,
+    isFormValid,
+    handleSubmit,
+    RELATIONSHIP_OPTIONS,
+    FONT_OPTIONS,
+    selectedProfileImageId,
+    handleImageSelect,
+    selectableImages,
+    isLoading,
+    error,
+  } = useMessageForm();
 
   return (
     <PageContainer>
-      <MessageFormBox>
+      <MessageFormBox onSubmit={handleSubmit}>
         {/* From. 입력 필드 */}
         <FormField>
           <FormLabel htmlFor="fromInput">From.</FormLabel>
-          <InputField id="fromInput" name="from" placeholder="이름을 입력해 주세요." />
-          {/* 에러 메시지 표시 */}
-          {hasError && <ErrorMessage>"값을 입력해 주세요."</ErrorMessage>}
+          <FromInput
+            id="fromInput"
+            name="from"
+            placeholder="이름을 입력해 주세요."
+            value={fromInput.value}
+            onChange={fromInput.handleChange}
+            onBlur={fromInput.handleBlur}
+            hasError={fromInput.hasError}
+            errorMessage="값을 입력해 주세요."
+          />
         </FormField>
-        {/* 프로필 이미지 선택창 */}
-        <ProfileWrapper>
-          <FormLabel as="p">프로필 이미지</FormLabel>
-          <ProfileSelectorContainer>
-            <ProfileDefaultBox>
-              <img src={DEFAULT_ICON_URL} alt="기본 프로필 이미지" />
-            </ProfileDefaultBox>
 
-            <SelectableImagesList>
-              {selectableImages.map((image) => (
-                <SelectableImageItem key={image.id} isSelected={image.isSelected}>
-                  <img src={image.url} alt={`프로필 ${image.id}`} />
-                </SelectableImageItem>
-              ))}
-            </SelectableImagesList>
-          </ProfileSelectorContainer>
-        </ProfileWrapper>
+        {/* 프로필 이미지 선택 */}
+        <ProfileImageSelector
+          selectedId={selectedProfileImageId}
+          onImageSelect={handleImageSelect}
+          selectableImages={selectableImages}
+          isLoading={isLoading}
+          error={error}
+        />
 
         {/* 상대와의 관계 드롭다운*/}
         <FormField>
           <FormLabel htmlFor="relationshipSelect">상대와의 관계</FormLabel>
-          <SelectField id="relationshipSelect" name="relationship" defaultValue="지인">
-            <option value="지인">지인</option>
-            <option value="친구">친구</option>
-            <option value="동료">동료</option>
-            <option value="가족">가족</option>
-          </SelectField>
+          <DropDown
+            id="relationshipSelect"
+            name="relationship"
+            defaultValue="지인"
+            options={RELATIONSHIP_OPTIONS}
+            value={relationshipDropdown.value}
+            onChange={relationshipDropdown.handleChange}
+          />
         </FormField>
 
-        {/* 내용 입력 (Rich Text Editor 사용) */}
         <FormField>
           <FormLabel as="p">내용을 입력해 주세요</FormLabel>
-          <EditorPlaceholder>
-            <p>I am your reach text editor.</p>
-          </EditorPlaceholder>
+          <RichTextEditor value={editorContent} onChange={setEditorContent} />
         </FormField>
 
         {/* 폰트 선택 드롭다운 */}
         <FormField>
           <FormLabel htmlFor="fontSelect">폰트 선택</FormLabel>
-          <SelectField id="fontSelect" name="font" defaultValue="Noto Sans">
-            <option value="Noto Sans">Noto Sans</option>
-            {/* 추가 폰트 옵션 추가 예정 */}
-          </SelectField>
+          <DropDown
+            id="fontSelect"
+            name="font"
+            defaultValue="Noto Sans"
+            options={FONT_OPTIONS}
+            value={fontDropdown.value}
+            onChange={fontDropdown.handleChange}
+          />
         </FormField>
 
         {/* 생성하기 버튼 */}
-        <SubmitButton type="submit" disabled={!isFormValid}>
+        <FullWidthButton
+          type="submit"
+          $variant="primary"
+          size="large"
+          disabled={!isFormValid}
+        >
           생성하기
-        </SubmitButton>
+        </FullWidthButton>
       </MessageFormBox>
     </PageContainer>
   );

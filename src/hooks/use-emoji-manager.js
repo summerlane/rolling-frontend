@@ -8,7 +8,9 @@ export default function useEmojiManager(initialEmojis = []) {
   const [selectedEmojis, setSelectedEmojis] = useState(initialEmojis);
 
   const handleEmojiSelect = (emoji) => {
-    const existingEmojiIndex = selectedEmojis.findIndex((item) => item.emoji === emoji);
+    const existingEmojiIndex = selectedEmojis.findIndex(
+      (item) => item.emoji === emoji
+    );
 
     if (existingEmojiIndex !== -1) {
       // 이미 존재하는 이모지면 카운트 증가

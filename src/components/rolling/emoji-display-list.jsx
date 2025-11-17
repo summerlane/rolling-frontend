@@ -1,8 +1,8 @@
 import React from "react";
 import {
-    RollingHeaderEmojiIconContainer,
-    RollingHeaderEmojiText,
-    RollingHeaderEmojiIcon,
+  RollingHeaderEmojiIconContainer,
+  RollingHeaderEmojiText,
+  RollingHeaderEmojiIcon,
 } from "@/styles/rolling-page-styles";
 
 /**
@@ -10,14 +10,14 @@ import {
  * 책임: 상위 N개의 이모지를 화면에 표시
  */
 export default function EmojiDisplayList({ emojis }) {
-    return (
-        <>
-            {emojis.map((emojiData, index) => (
-                <RollingHeaderEmojiIconContainer key={index}>
-                    <RollingHeaderEmojiIcon>{emojiData.emoji}</RollingHeaderEmojiIcon>
-                    <RollingHeaderEmojiText>{emojiData.count}</RollingHeaderEmojiText>
-                </RollingHeaderEmojiIconContainer>
-            ))}
-        </>
-    );
+  return (
+    <>
+      {emojis.map((emojiData, index) => (
+        <RollingHeaderEmojiIconContainer key={index}>
+          <RollingHeaderEmojiIcon>{emojiData.emoji}</RollingHeaderEmojiIcon>
+          <RollingHeaderEmojiText>{emojiData.count}</RollingHeaderEmojiText>
+        </RollingHeaderEmojiIconContainer>
+      ))}
+    </>
+  );
 }

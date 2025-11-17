@@ -32,7 +32,12 @@ const Overlay = styled.div`
  * 이모지 선택기 컴포넌트
  * 책임: 이모지 피커 UI 렌더링 및 이모지 선택 이벤트 처리
  */
-export default function EmojiPickerComponent({ isOpen, onClose, onEmojiSelect, children }) {
+export default function EmojiPickerComponent({
+  isOpen,
+  onClose,
+  onEmojiSelect,
+  children,
+}) {
   const handleEmojiClick = (emojiData) => {
     onEmojiSelect(emojiData.emoji);
     onClose();

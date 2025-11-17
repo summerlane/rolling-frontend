@@ -19,7 +19,8 @@ export default function useKakaoSdk() {
     // SDK 스크립트 동적 로드
     const script = document.createElement("script");
     script.src = "https://t1.kakaocdn.net/kakao_js_sdk/2.7.7/kakao.min.js";
-    script.integrity = "sha384-tJkjbtDbvoxO+diRuDtwRO9JXR7pjWnfjfRn5ePUpl7e7RJCxKCwwnfqUAdXh53p";
+    script.integrity =
+      "sha384-tJkjbtDbvoxO+diRuDtwRO9JXR7pjWnfjfRn5ePUpl7e7RJCxKCwwnfqUAdXh53p";
     script.crossOrigin = "anonymous";
     script.async = true;
 

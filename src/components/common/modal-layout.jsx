@@ -69,7 +69,13 @@ const CloseButton = styled.button`
  * 공통 모달 레이아웃 컴포넌트
  * 책임: 모달의 기본 구조와 레이아웃 제공
  */
-export default function ModalLayout({ isOpen, onClose, title, children, showCloseButton = true }) {
+export default function ModalLayout({
+  isOpen,
+  onClose,
+  title,
+  children,
+  showCloseButton = true,
+}) {
   if (!isOpen) return null;
 
   return (

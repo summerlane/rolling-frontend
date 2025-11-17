@@ -42,7 +42,6 @@ export default function RollingPage() {
     return <div>잘못된 페이지 주소입니다.</div>;
   }
 
-
   if (error) {
     return <div>에러가 발생했습니다: {error}</div>;
   }
@@ -52,11 +51,12 @@ export default function RollingPage() {
   }
 
   // recentMessages에서 프로필 데이터 추출 (최신순 3개)
-  const profiles = recipient.recentMessages?.map((msg, index) => ({
-    id: msg.id || index,
-    name: msg.sender,
-    profileImageURL: msg.profileImageURL,
-  })) || [];
+  const profiles =
+    recipient.recentMessages?.map((msg, index) => ({
+      id: msg.id || index,
+      name: msg.sender,
+      profileImageURL: msg.profileImageURL,
+    })) || [];
 
   // 페이지 삭제 핸들러
   const handleOpenDeletePageModal = () => {
@@ -95,12 +95,12 @@ export default function RollingPage() {
             ShareIcon={ShareIcon}
           />
         </RollingHeaderRightContainer>
-
       </RollingHeaderContainer>
 
       <RollingPageContainer
         $backgroundcolor={recipient.backgroundColor}
-        $backgroundimage={recipient.backgroundImageURL}>
+        $backgroundimage={recipient.backgroundImageURL}
+      >
         {/* 편집 모드일 때만 페이지 삭제 버튼 표시 */}
         <CardContainerWrapper>
           {isEditMode && (

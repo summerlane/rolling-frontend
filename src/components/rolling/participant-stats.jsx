@@ -7,7 +7,11 @@ import { RollingHeaderUserPeopleState } from "@/styles/rolling-page-styles";
  */
 export default function ParticipantStats({ count }) {
   if (count === 0) {
-    return <RollingHeaderUserPeopleState>작성한 사람이 없어요!</RollingHeaderUserPeopleState>;
+    return (
+      <RollingHeaderUserPeopleState>
+        작성한 사람이 없어요!
+      </RollingHeaderUserPeopleState>
+    );
   }
 
   return (

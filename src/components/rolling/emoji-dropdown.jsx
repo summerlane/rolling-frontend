@@ -74,7 +74,13 @@ const Overlay = styled.div`
  * 이모지 드롭다운 컴포넌트
  * 책임: 이모지 목록을 드롭다운 형태로 표시 (API에서 이미 정렬된 상위 8개)
  */
-export default function EmojiDropdown({ emojis, isOpen, onToggle, onClose, arrowDownIcon }) {
+export default function EmojiDropdown({
+  emojis,
+  isOpen,
+  onToggle,
+  onClose,
+  arrowDownIcon,
+}) {
   // API에서 이미 카운트 순으로 정렬되어 최대 8개만 제공됨
   const topEmojis = emojis;
   return (

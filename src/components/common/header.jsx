@@ -11,7 +11,9 @@ const ContainWrapper = styled.div`
   border-bottom: 1px solid #ededed;
   z-index: 1003;
 
-  ${props => props.$isRollingPage && media.small`
+  ${(props) =>
+    props.$isRollingPage &&
+    media.small`
     display: none;
   `}
 `;
@@ -45,7 +47,7 @@ const ButtonWrapper = styled.div`
 
 export default function Header({ showButton }) {
   const location = useLocation();
-  const isRollingPage = location.pathname.startsWith('/post/');
+  const isRollingPage = location.pathname.startsWith("/post/");
 
   return (
     <>
