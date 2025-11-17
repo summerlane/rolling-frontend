@@ -51,8 +51,8 @@ const RelationshipBadge = styled.div`
 
 const MessageContent = styled.div`
   ${font.regular18}
-  color: #5A5A5A;
-  line-height: 1.6;
+  color:${colors.gray[600]};
+  line-height: 24px;
   white-space: pre-wrap;
   word-break: break-word;
   overflow-y: auto;

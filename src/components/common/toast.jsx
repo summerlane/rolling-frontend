@@ -55,8 +55,10 @@ const ToastStyle = styled.div`
 
   ${media.medium`
       width: 524px;
+      position: absolute;
       left: calc(50% - 262px);
-      bottom: 50px;
+      bottom: 10%;
+      transform: translate(-50%, 50%);
     `}
 
   ${media.small`

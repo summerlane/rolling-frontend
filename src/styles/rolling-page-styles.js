@@ -403,7 +403,8 @@ export const CardContentContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 16px 24px;
+  gap: 15px;
+  padding: 28px 24px;
 `;
 
 export const CardContentStatus = styled.div`
@@ -481,11 +482,17 @@ export const CardContentStatusRelationship = styled.div`
 
 export const CardContentText = styled.div`
   width: 100%;
-  height: 100%;
-  ${font.regular16}
+  height: 40%;
+  ${font.regular18}
   color: ${colors.gray[600]};
-  padding-top: 16px;
   cursor: pointer;
+  line-height: 28px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
 `;
 
 export const CardContentDate = styled.div`
@@ -531,7 +538,6 @@ export const CardPageDeleteButton = styled.div`
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 40px);
-    max-width: 768px;
     height: 56px;
     padding: 12px 16px;
     z-index: 1003;
@@ -544,7 +550,6 @@ export const CardPageDeleteButton = styled.div`
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 40px);
-    max-width: 384px;
     height: 56px;
     padding: 12px 16px;
     z-index: 1003;
