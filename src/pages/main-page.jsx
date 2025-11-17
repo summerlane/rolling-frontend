@@ -10,6 +10,7 @@ import mainVisual02 from "@/assets/images/main-visual-02.webp";
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,6 +155,7 @@ const MainTitleSmall = styled.p`
 const CustomButton = styled(Button)`
   width: 286px;
   height: 56px;
+  margin: 20px 0;
 
   ${media.small`
     width: calc(100% - 40px);
@@ -161,6 +163,20 @@ const CustomButton = styled(Button)`
 
   ${media.medium`
      width: calc(100% - 48px);
+   `}
+`;
+
+const CustomLink = styled(Link)`
+  ${media.small`
+    width: 100%;
+    display: flex;
+     justify-content: center;
+   `}
+
+  ${media.medium`
+     width: 100%;
+     display: flex;
+     justify-content: center;
    `}
 `;
 
@@ -181,11 +197,11 @@ export default function MainPage() {
           롤링 페이퍼에 이모지를 추가할 수 있어요.
         </MainTitleSmall>
       </MainFlexBoxRightPosition>
-      <Link to="/list">
+      <CustomLink to="/list">
         <CustomButton variant="primary" size="large">
           구경해보기
         </CustomButton>
-      </Link>
+      </CustomLink>
     </Container>
   );
 }

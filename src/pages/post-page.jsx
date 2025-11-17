@@ -6,10 +6,13 @@ import Toggle from "@/components/common/toggle";
 import { useState } from "react";
 import Button from "@/components/common/button";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Container = styled.div`
+  min-width: 380px;
   max-width: 720px;
   margin: 0 auto;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,6 +74,8 @@ export default function PostPage() {
   const [isSelectDiv, setIsSelectDiv] = useState(bgColors[0]);
   const [isSelectImg, setIsSelectImg] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleInputName = (e) => {
     setName(e.target.value);
 
@@ -107,6 +112,9 @@ export default function PostPage() {
       .then((response) => {
         console.log(response.data);
         alert("전송을 성공하였습니다.");
+
+        const getId = response.data.id;
+        navigate(`/post/${getId}`);
       })
       .catch((error) => {
         console.error("전송에 실패하였습니다.", error);
