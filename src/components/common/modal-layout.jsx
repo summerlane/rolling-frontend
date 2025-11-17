@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { colors } from '@/styles/colors';
-import { font } from '@/styles/font';
-import media from '@/styles/media';
+import React from "react";
+import styled from "styled-components";
+import { colors } from "@/styles/colors";
+import { font } from "@/styles/font";
+import media from "@/styles/media";
 
 const Overlay = styled.div`
   position: fixed;
@@ -10,7 +10,10 @@ const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 999;
 `;
 
@@ -18,11 +21,13 @@ const ModalContainer = styled.div`
   background: white;
   border-radius: 16px;
   padding: 40px;
-  width: 480px;
+  width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 
   ${media.medium`
-    width: 400px;
+    width: 600px;
     padding: 30px;
   `}
 
@@ -72,11 +77,8 @@ export default function ModalLayout({ isOpen, onClose, title, children, showClos
       <ModalContainer onClick={(e) => e.stopPropagation()}>
         {title && <ModalTitle>{title}</ModalTitle>}
         <ModalContent>{children}</ModalContent>
-        {showCloseButton && (
-          <CloseButton onClick={onClose}>닫기</CloseButton>
-        )}
+        {showCloseButton && <CloseButton onClick={onClose}>닫기</CloseButton>}
       </ModalContainer>
     </Overlay>
   );
 }
-

@@ -16,11 +16,11 @@ export const GlobalStyle = createGlobalStyle`${css`
   #root {
     margin: 0;
     padding: 0;
+    
   }
 
   :root {
-    --font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
-      Roboto, sans-serif;
+    --font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   }
 
   body {

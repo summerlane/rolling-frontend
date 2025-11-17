@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { colors } from "@/styles/colors";
 import media from "@/styles/media";
 
-
 export const HeadNavContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -10,9 +9,8 @@ export const HeadNavContainer = styled.div`
   height: 65px;
   background-color: #fff;
   border-bottom: 1px solid ${colors.gray[200]};
-  
+
   ${media.small`
   display: none;
   `}
-
 `;
