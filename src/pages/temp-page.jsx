@@ -24,7 +24,7 @@ export default function TempPage() {
       <Link to="/list">
         <CustomButton size="large">리스트 페이지</CustomButton>
       </Link>
-      <Link to="/rolling">
+      <Link to="/post">
         <CustomButton size="large">롤페 페이지</CustomButton>
       </Link>
       <Link to="/post">

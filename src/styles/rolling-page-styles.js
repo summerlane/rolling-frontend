@@ -143,7 +143,9 @@ export const RollingHeaderUserPeopleImage = styled.img`
   margin-left: -10px;
 `;
 
-export const RollingHeaderUserDefaultImage = styled(RollingHeaderUserPeopleImage)``;
+export const RollingHeaderUserDefaultImage = styled(
+  RollingHeaderUserPeopleImage
+)``;
 
 //몇명이 작성중인지
 export const RollingHeaderUserPeopleState = styled.div`
@@ -168,6 +170,9 @@ export const RollingHeaderEmojiContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  ${media.small`
+    gap: 4px;
+  `}
 `;
 
 export const RollingHeaderEmojiIconContainer = styled.div`
@@ -179,8 +184,8 @@ export const RollingHeaderEmojiIconContainer = styled.div`
   padding: 8px 12px;
   text-align: center;
   border-radius: 32px;
-  background: rgba(153, 153, 153, 1);
-  gap: 6px;
+  background: rgba(0, 0, 0, 0.54);
+  gap: 2px;
 
   ${media.small`
     padding: 6px 10px;
@@ -201,7 +206,11 @@ export const RollingHeaderEmojiIcon = styled.div`
 
 export const RollingHeaderEmojiText = styled.span`
   ${font.regular16}
-  color: rgba(255, 255, 255, 1)
+  color: rgba(255, 255, 255, 1);
+
+  ${media.small`
+    ${font.regular14}
+  `}
 `;
 
 export const RollingHeaderEmojiEditButton = styled.button`
@@ -289,9 +298,16 @@ export const PerpendicularLineFirst = styled(PerpendicularLine)`
 
 export const PerpendicularLineSecond = styled(PerpendicularLine)``;
 
-
-const RollingPageWrapper = ({ $backgroundcolor, $backgroundimage, ...rest }) => {
-  return React.createElement('div', { $backgroundcolor, $backgroundimage, ...rest });
+const RollingPageWrapper = ({
+  $backgroundcolor,
+  $backgroundimage,
+  ...rest
+}) => {
+  return React.createElement("div", {
+    $backgroundcolor,
+    $backgroundimage,
+    ...rest,
+  });
 };
 export const RollingPageContainer = styled(RollingPageWrapper)`
   display: flex;
@@ -307,7 +323,6 @@ export const RollingPageContainer = styled(RollingPageWrapper)`
   padding: 63px 216px 113px 216px;
   gap: 11px;
 
-
   ${media.medium`
     padding: 5% 2%;
   `}
@@ -316,8 +331,6 @@ export const RollingPageContainer = styled(RollingPageWrapper)`
     padding: 63px 20px 113px 20px;
   `}
 `;
-
-
 
 export const CardContainerWrapper = styled.div`
   display: flex;
@@ -465,8 +478,6 @@ const relationshipTextColors = {
   acquaintance: colors.beige[500],
 };
 
-
-
 export const CardContentStatusRelationship = styled.div`
   display: inline-flex;
   align-items: center;
@@ -475,9 +486,11 @@ export const CardContentStatusRelationship = styled.div`
   height: 20px;
   border-radius: 4px;
   ${font.regular14}
-  color: ${(props) => relationshipTextColors[props.$relationship] || colors.gray[500]};
+  color: ${(props) =>
+    relationshipTextColors[props.$relationship] || colors.gray[500]};
 
-  background-color: ${(props) => relationshipColors[props.$relationship] || colors.gray[500]};
+  background-color: ${(props) =>
+    relationshipColors[props.$relationship] || colors.gray[500]};
 `;
 
 export const CardContentText = styled.div`
@@ -492,7 +505,6 @@ export const CardContentText = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-
 `;
 
 export const CardContentDate = styled.div`
