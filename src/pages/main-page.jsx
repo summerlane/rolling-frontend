@@ -167,17 +167,13 @@ export default function MainPage() {
     <Container>
       <MainFlexBox>
         <PointLabel>Point. 01</PointLabel>
-        <MainTitle>
-          누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요
-        </MainTitle>
+        <MainTitle>누구나 손쉽게, 온라인 롤링 페이퍼를 만들 수 있어요</MainTitle>
         <MainTitleSmall>로그인 없이 자유롭게 만들어요.</MainTitleSmall>
       </MainFlexBox>
       <MainFlexBoxRightPosition>
         <PointLabel>Point. 02</PointLabel>
         <MainTitle>서로에게 이모지로 감정을 표현해보세요</MainTitle>
-        <MainTitleSmall>
-          롤링 페이퍼에 이모지를 추가할 수 있어요.
-        </MainTitleSmall>
+        <MainTitleSmall>롤링 페이퍼에 이모지를 추가할 수 있어요.</MainTitleSmall>
       </MainFlexBoxRightPosition>
       <Link to="/post">
         <CustomButton variant="primary" size="large">

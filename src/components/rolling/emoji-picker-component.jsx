@@ -1,7 +1,7 @@
-import React from 'react';
-import EmojiPicker from 'emoji-picker-react';
-import styled from 'styled-components';
-import { colors } from '@/styles/colors';
+import React from "react";
+import EmojiPicker from "emoji-picker-react";
+import styled from "styled-components";
+import { colors } from "@/styles/colors";
 
 const EmojiPickerContainer = styled.div`
   position: relative;
@@ -33,30 +33,29 @@ const Overlay = styled.div`
  * 책임: 이모지 피커 UI 렌더링 및 이모지 선택 이벤트 처리
  */
 export default function EmojiPickerComponent({ isOpen, onClose, onEmojiSelect, children }) {
-    const handleEmojiClick = (emojiData) => {
-        onEmojiSelect(emojiData.emoji);
-        onClose();
-    };
+  const handleEmojiClick = (emojiData) => {
+    onEmojiSelect(emojiData.emoji);
+    onClose();
+  };
 
-    return (
-        <EmojiPickerContainer>
-            {children}
-            {isOpen && (
-                <>
-                    <Overlay onClick={onClose} />
-                    <EmojiPickerWrapper>
-                        <EmojiPicker
-                            onEmojiClick={handleEmojiClick}
-                            width={320}
-                            searchPlaceholder="search"
-                            skinTonesDisabled={true}
-                            searchDisabled={false}
-                            autoFocusSearch={false}
-                        />
-                    </EmojiPickerWrapper>
-                </>
-            )}
-        </EmojiPickerContainer>
-    );
+  return (
+    <EmojiPickerContainer>
+      {children}
+      {isOpen && (
+        <>
+          <Overlay onClick={onClose} />
+          <EmojiPickerWrapper>
+            <EmojiPicker
+              onEmojiClick={handleEmojiClick}
+              width={320}
+              searchPlaceholder="search"
+              skinTonesDisabled={true}
+              searchDisabled={false}
+              autoFocusSearch={false}
+            />
+          </EmojiPickerWrapper>
+        </>
+      )}
+    </EmojiPickerContainer>
+  );
 }
-

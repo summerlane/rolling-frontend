@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import { colors } from '@/styles/colors';
-import { font } from '@/styles/font';
+import React from "react";
+import styled from "styled-components";
+import { colors } from "@/styles/colors";
+import { font } from "@/styles/font";
 
 const OverflowBadge = styled.div`
   width: 28px;
   height: 28px;
   border-radius: 140px;
-  border: 1.4px solid ${colors.gray[900]};
-  background: ${colors.gray[200]};
+  border: 1.4px solid ${colors.gray[300]};
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,10 +23,9 @@ const OverflowBadge = styled.div`
  * 책임: 추가 인원 수를 표시 (+N)
  */
 export default function ProfileOverflowBadge({ count }) {
-    if (count <= 0) {
-        return null;
-    }
+  if (count <= 0) {
+    return null;
+  }
 
-    return <OverflowBadge>+{count}</OverflowBadge>;
+  return <OverflowBadge>+{count}</OverflowBadge>;
 }
-

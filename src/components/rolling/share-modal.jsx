@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import ShareButtonGroup from './share-button-group';
-import useKakaoSdk from '@/hooks/use-kakao-sdk';
-import useShareActions from '@/hooks/use-share-actions';
+import ShareButtonGroup from "./share-button-group";
+import useKakaoSdk from "@/hooks/use-kakao-sdk";
+import useShareActions from "@/hooks/use-share-actions";
 
 const Overlay = styled.div`
   position: fixed;
@@ -52,4 +52,3 @@ export default function ShareModal({ isOpen, onClose, shareUrl }) {
     </>
   );
 }
-

@@ -5,9 +5,7 @@ const PAGES_WITH_BUTTON = ["main", "list"];
 
 export default function GlobalLayout() {
   const location = useLocation();
-  const showButton = PAGES_WITH_BUTTON.some((page) =>
-    location.pathname.includes(page)
-  );
+  const showButton = PAGES_WITH_BUTTON.some((page) => location.pathname.includes(page));
 
   return (
     <>
