@@ -4,6 +4,8 @@ import { font } from "@/styles/font";
 import media from "@/styles/media";
 import Button from "@/components/common/button";
 import { Link } from "react-router";
+import mainVisual01 from "@/assets/images/main-visual-01.webp";
+import mainVisual02 from "@/assets/images/main-visual-02.webp";
 
 const Container = styled.div`
   max-width: 1200px;
@@ -27,7 +29,7 @@ const MainFlexBox = styled.div`
   flex-direction: column;
   gap: 20px;
   background-color: ${colors.surface};
-  background-image: url(./src/assets/images/main-visual-01.webp);
+  background-image: url(${mainVisual01});
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: right 7px top 60px;
@@ -73,7 +75,7 @@ const MainFlexBoxRightPosition = styled.div`
   flex-direction: column;
   gap: 20px;
   background-color: ${colors.surface};
-  background-image: url(./src/assets/images/main-visual-02.webp);
+  background-image: url(${mainVisual02});
   background-size: 60%;
   background-repeat: no-repeat;
   background-position: left -7px top 60px;

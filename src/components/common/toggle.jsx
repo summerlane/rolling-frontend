@@ -4,6 +4,7 @@ import { font } from "@/styles/font";
 import media from "@/styles/media";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import selectCircle from "@/assets/images/select-circle.webp";
 
 const ToggleSection = styled.div`
   width: 100%;
@@ -81,7 +82,7 @@ const ToggleDiv = styled.div`
   background-color: ${(props) => props.$bgColor};
   cursor: pointer;
   background-image: ${(props) =>
-    props.$active ? "url(./src/assets/images/select-circle.webp)" : null};
+    props.$active ? `url(${selectCircle})` : null};
   background-repeat: no-repeat;
   background-size: 44px 44px;
   background-position: center;
@@ -109,9 +110,7 @@ const ToggleImg = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   background-image: ${(props) =>
-      props.$active
-        ? "url(./src/assets/images/select-circle.webp)"
-        : "url(${$bgImgs})"},
+      props.$active ? `url(${selectCircle})` : `url(${props.bgImgs})`},
     url(${(props) => props.$bgImgs});
   background-repeat: no-repeat;
   background-size: 44px 44px, 180%;
@@ -127,15 +126,6 @@ const ToggleImg = styled.div`
   `}
 `;
 
-const ImgSelect = styled.div`
-  width: 100%;
-  height: 100%;
-  background-image: url(./src/assets/images/select-circle.webp);
-  background-repeat: no-repeat;
-  background-size: 44px 44px;
-  background-position: center;
-`;
-
 export default function Toggle({
   bgColors,
   isSelectDiv,
@@ -143,17 +133,8 @@ export default function Toggle({
   isSelectImg,
   setIsSelectImg,
 }) {
-  // const bgColors = [
-  //   colors.beige[200],
-  //   colors.purple[200],
-  //   colors.blue[200],
-  //   colors.green[200],
-  // ];
-
   const [imgs, setImgs] = useState([]);
   const [toggle, setToggle] = useState(false);
-  // const [isSelectDiv, setIsSelectDiv] = useState(bgColors[0]);
-  // const [isSelectImg, setIsSelectImg] = useState(imgs[0]);
 
   useEffect(() => {
     axios
@@ -161,9 +142,9 @@ export default function Toggle({
       .then((response) => {
         setImgs(response.data.imageUrls);
 
-        if (response.data.imageUrls.length > 0) {
-          setIsSelectImg(response.data.imageUrls[0]);
-        }
+        // if (response.data.imageUrls.length > 0) {
+        //   setIsSelectImg(response.data.imageUrls[0]);
+        // }
       })
       .catch((error) => {
         console.error("배경 이미지 가져오기에 실패했습니다.", error);
@@ -214,8 +195,6 @@ export default function Toggle({
                 $bgImgs={bgImg}
               />
             ))}
-            {/* <ToggleImg>{isSelectImg === 1 && <ImgSelect />}</ToggleImg>
-            <ToggleImg $active={isSelectImg === 1} /> */}
           </ToggleImgContainer>
         )}
       </ToggleSection>
