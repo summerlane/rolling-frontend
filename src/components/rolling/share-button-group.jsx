@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { colors } from '@/styles/colors';
-import { font } from '@/styles/font';
+import React from "react";
+import styled from "styled-components";
+import { colors } from "@/styles/colors";
+import { font } from "@/styles/font";
 
 const ButtonGroup = styled.div`
   position: absolute;
@@ -32,11 +32,10 @@ const ShareButton = styled.button`
   transition: all 0.2s;
   ${font.regular16}
   color: ${colors.gray[900]};
-  
+
   &:hover {
     background: ${colors.gray[200]};
     border-color: ${colors.gray[400]};
-    
   }
 
   &:active {
@@ -67,4 +66,3 @@ export default function ShareButtonGroup({ onKakaoShare, onCopyUrl }) {
     </ButtonGroup>
   );
 }
-

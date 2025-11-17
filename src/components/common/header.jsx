@@ -1,7 +1,8 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import styled from "styled-components";
 import logo from "@/assets/icons/logo.svg";
 import Button from "@/components/common/button";
+import media from "@/styles/media";
 
 const ContainWrapper = styled.div`
   position: sticky;
@@ -9,6 +10,10 @@ const ContainWrapper = styled.div`
   background-color: white;
   border-bottom: 1px solid #ededed;
   z-index: 1003;
+
+  ${props => props.$isRollingPage && media.small`
+    display: none;
+  `}
 `;
 
 const Contain = styled.div`
@@ -35,9 +40,12 @@ const ButtonWrapper = styled.div`
 `;
 
 export default function Header({ showButton }) {
+  const location = useLocation();
+  const isRollingPage = location.pathname.startsWith('/post/');
+
   return (
     <>
-      <ContainWrapper>
+      <ContainWrapper $isRollingPage={isRollingPage}>
         <Contain>
           <HeaderWrapper>
             <Link to="/">

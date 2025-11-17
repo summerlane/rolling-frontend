@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { colors } from '@/styles/colors';
-import media from '@/styles/media';
-import { font } from '@/styles/font';
-import { RollingHeaderArrowDown } from '@/styles/rolling-page-styles';
+import React from "react";
+import styled from "styled-components";
+import { colors } from "@/styles/colors";
+import media from "@/styles/media";
+import { font } from "@/styles/font";
+import { RollingHeaderArrowDown } from "@/styles/rolling-page-styles";
 
 const EmojiDropdownContainer = styled.div`
   position: relative;
@@ -72,27 +72,20 @@ const Overlay = styled.div`
 
 /**
  * 이모지 드롭다운 컴포넌트
- * 책임: 모든 이모지 목록을 드롭다운 형태로 표시
+ * 책임: 이모지 목록을 드롭다운 형태로 표시 (API에서 이미 정렬된 상위 8개)
  */
-export default function EmojiDropdown({
-  emojis,
-  isOpen,
-  onToggle,
-  onClose,
-  arrowDownIcon
-}) {
+export default function EmojiDropdown({ emojis, isOpen, onToggle, onClose, arrowDownIcon }) {
+  // API에서 이미 카운트 순으로 정렬되어 최대 8개만 제공됨
+  const topEmojis = emojis;
   return (
     <EmojiDropdownContainer>
-      <RollingHeaderArrowDown
-        src={arrowDownIcon}
-        onClick={onToggle}
-      />
+      <RollingHeaderArrowDown src={arrowDownIcon} onClick={onToggle} />
       {isOpen && (
         <>
           <Overlay onClick={onClose} />
           <EmojiDropdownWrapper>
             <EmojiDropdownGrid>
-              {emojis.map((emojiData, index) => (
+              {topEmojis.map((emojiData, index) => (
                 <EmojiDropdownItem key={index}>
                   <EmojiDropdownIcon>{emojiData.emoji}</EmojiDropdownIcon>
                   <EmojiDropdownCount>{emojiData.count}</EmojiDropdownCount>
@@ -105,4 +98,3 @@ export default function EmojiDropdown({
     </EmojiDropdownContainer>
   );
 }
-

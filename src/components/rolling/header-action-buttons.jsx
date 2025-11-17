@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import EmojiPickerComponent from './emoji-picker-component';
+import React from "react";
+import styled from "styled-components";
+import EmojiPickerComponent from "./emoji-picker-component";
 import {
-    RollingHeaderImojiEditButtonContainer,
-    RollingHeaderImojiEditButton,
-    RollingHeaderImojiEditButtonIcon,
-    RollingHeaderImojiEditButtonText,
+    RollingHeaderEmojiEditButtonContainer,
+    RollingHeaderEmojiEditButton,
+    RollingHeaderEmojiEditButtonIcon,
+    RollingHeaderEmojiEditButtonText,
     PerpendicularLineSecond,
     RollingHeaderLinkShareButton,
-} from '@/styles/rolling-page-styles';
+} from "@/styles/rolling-page-styles";
 
 const ShareButtonWrapper = styled.div`
-    position: relative;
+  position: relative;
 `;
 
 /**
@@ -29,27 +29,26 @@ export default function HeaderActionButtons({
     shareModalComponent, // ShareModal 컴포넌트를 props로 받음
 }) {
     return (
-        <RollingHeaderImojiEditButtonContainer>
+        <RollingHeaderEmojiEditButtonContainer>
             <EmojiPickerComponent
                 isOpen={isEmojiPickerOpen}
                 onClose={onCloseEmojiPicker}
                 onEmojiSelect={onEmojiSelect}
             >
-                <RollingHeaderImojiEditButton onClick={onToggleEmojiPicker}>
-                    <RollingHeaderImojiEditButtonIcon src={addEmojiIcon} />
-                    <RollingHeaderImojiEditButtonText>추가</RollingHeaderImojiEditButtonText>
-                </RollingHeaderImojiEditButton>
+                <RollingHeaderEmojiEditButton onClick={onToggleEmojiPicker}>
+                    <RollingHeaderEmojiEditButtonIcon src={addEmojiIcon} />
+                    <RollingHeaderEmojiEditButtonText>추가</RollingHeaderEmojiEditButtonText>
+                </RollingHeaderEmojiEditButton>
             </EmojiPickerComponent>
             <PerpendicularLineSecond />
             <ShareButtonWrapper>
                 <RollingHeaderLinkShareButton
                     src={shareIcon}
                     onClick={onShareClick}
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                 />
                 {shareModalComponent}
             </ShareButtonWrapper>
-        </RollingHeaderImojiEditButtonContainer>
+        </RollingHeaderEmojiEditButtonContainer>
     );
 }
-
