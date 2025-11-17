@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "@/components/common/button";
 import { Link } from "react-router";
-import { RollingHeaderImojiContainer } from "@/styles/rolling-page-styles";
+import { RollingHeaderEmojiContainer } from "@/styles/rolling-page-styles";
 import { font } from "@/styles/font";
 import { colors } from "@/styles/colors";
 import media from "@/styles/media";
@@ -282,7 +282,7 @@ export const WriterCountText = styled.div`
   }
 `;
 
-export const EmojiWrapper = styled(RollingHeaderImojiContainer)`
+export const EmojiWrapper = styled(RollingHeaderEmojiContainer)`
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   padding-top: 17px;
   font-size: 14px;

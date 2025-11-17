@@ -10,7 +10,6 @@ import DeleteIcon from "@/assets/icons/deleted.svg";
 
 //최상단헤더 컨테이너
 export const RollingHeaderContainer = styled.div`
-export const RollingHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +18,6 @@ export const RollingHeaderContainer = styled.div`
   height: 68px;
   background-color: rgba(255, 255, 255, 1);
   gap: 20px;
-
 
   ${media.large`
     width: 1200px;
@@ -300,9 +298,16 @@ export const PerpendicularLineFirst = styled(PerpendicularLine)`
 
 export const PerpendicularLineSecond = styled(PerpendicularLine)``;
 
-
-const RollingPageWrapper = ({ $backgroundcolor, $backgroundimage, ...rest }) => {
-  return React.createElement('div', { $backgroundcolor, $backgroundimage, ...rest });
+const RollingPageWrapper = ({
+  $backgroundcolor,
+  $backgroundimage,
+  ...rest
+}) => {
+  return React.createElement("div", {
+    $backgroundcolor,
+    $backgroundimage,
+    ...rest,
+  });
 };
 export const RollingPageContainer = styled(RollingPageWrapper)`
   display: flex;
@@ -318,7 +323,6 @@ export const RollingPageContainer = styled(RollingPageWrapper)`
   padding: 63px 216px 113px 216px;
   gap: 11px;
 
-
   ${media.medium`
     padding: 5% 2%;
   `}
@@ -327,8 +331,6 @@ export const RollingPageContainer = styled(RollingPageWrapper)`
     padding: 63px 20px 113px 20px;
   `}
 `;
-
-
 
 export const CardContainerWrapper = styled.div`
   display: flex;
@@ -476,8 +478,6 @@ const relationshipTextColors = {
   acquaintance: colors.beige[500],
 };
 
-
-
 export const CardContentStatusRelationship = styled.div`
   display: inline-flex;
   align-items: center;
@@ -486,9 +486,11 @@ export const CardContentStatusRelationship = styled.div`
   height: 20px;
   border-radius: 4px;
   ${font.regular14}
-  color: ${(props) => relationshipTextColors[props.$relationship] || colors.gray[500]};
+  color: ${(props) =>
+    relationshipTextColors[props.$relationship] || colors.gray[500]};
 
-  background-color: ${(props) => relationshipColors[props.$relationship] || colors.gray[500]};
+  background-color: ${(props) =>
+    relationshipColors[props.$relationship] || colors.gray[500]};
 `;
 
 export const CardContentText = styled.div`
@@ -503,7 +505,6 @@ export const CardContentText = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-
 `;
 
 export const CardContentDate = styled.div`
