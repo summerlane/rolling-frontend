@@ -83,8 +83,6 @@ export const useMessageForm = () => {
       setImagesError(null);
 
       try {
-        console.log(`[API CALL] GET 요청 시작: ${PROFILE_API_URL}`);
-
         // axios.get 사용
         const response = await axios.get(PROFILE_API_URL);
         const data = response.data;
@@ -101,7 +99,6 @@ export const useMessageForm = () => {
           setSelectedProfileImageId(images[0].id);
         }
       } catch (err) {
-        console.error("프로필 이미지 GET 요청 실패:", err);
         // Axios 에러 객체에서 메시지 추출
         const errorMessage = err.response?.data?.message || err.message;
         setImagesError(new Error(errorMessage));
@@ -152,17 +149,11 @@ export const useMessageForm = () => {
     const POST_API_URL = `${BASE_URL}/20-1/recipients/${id}/messages/`;
 
     try {
-      console.log(`[API CALL] POST 요청 시작: ${POST_API_URL}`);
-
       // axios.post 사용
-      const response = await axios.post(POST_API_URL, formData);
-
-      console.log("롤링페이퍼 생성 성공. 서버 응답:", response.data);
-
+      await axios.post(POST_API_URL, formData);
       navigate(`/post/${id}`);
       return true;
     } catch (error) {
-      console.error("롤링페이퍼 생성 중 API 오류 발생:", error);
       // Axios 에러 객체에서 메시지 추출
       const errorMessage = error.response?.data?.message || error.message;
       alert(`롤링페이퍼 생성에 실패했습니다: ${errorMessage}`);

@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import Button from "@/components/common/button";
 import axios from "axios";
-import { useNavigate } from "react-router";
 
 const Container = styled.div`
   min-width: 380px;
@@ -71,8 +70,6 @@ export default function PostPage() {
     colors.blue[200],
     colors.green[200],
   ];
-
-  const navigate = useNavigate();
 
   const [isSelectDiv, setIsSelectDiv] = useState(bgColors[0]);
   const [isSelectImg, setIsSelectImg] = useState(null);
