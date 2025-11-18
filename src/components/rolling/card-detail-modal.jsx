@@ -5,6 +5,22 @@ import Button from "@/components/common/button";
 import { colors } from "@/styles/colors";
 import { font } from "@/styles/font";
 
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  padding-right: 16px;
+overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  padding-right: 16px;
+    max-height: 70vh;
+  
+`;
+
 const ProfileSection = styled.div`
   display: flex;
   justify-content: space-between;
@@ -102,28 +118,29 @@ export default function CardDetailModal({ isOpen, onClose, message }) {
 
   return (
     <ModalLayout isOpen={isOpen} onClose={onClose} showCloseButton={false}>
-      <ProfileSection>
-        <ProfileContainer>
-          <ProfileImage src={message.profileImageURL} alt={message.sender} />
-          <ProfileInfo>
-            <ProfileName>
-              From. <strong>{message.sender}</strong>
-            </ProfileName>
-            <RelationshipBadge
-              style={{
-                backgroundColor: relationshipStyle.bg,
-                color: relationshipStyle.text,
-              }}
-            >
-              {message.relationship}
-            </RelationshipBadge>
-          </ProfileInfo>
-        </ProfileContainer>
-        <MessageDate>{formatDate(message.createdAt)}</MessageDate>
+      <ContentContainer>
+        <ProfileSection>
+          <ProfileContainer>
+            <ProfileImage src={message.profileImageURL} alt={message.sender} />
+            <ProfileInfo>
+              <ProfileName>
+                From. <strong>{message.sender}</strong>
+              </ProfileName>
+              <RelationshipBadge
+                style={{
+                  backgroundColor: relationshipStyle.bg,
+                  color: relationshipStyle.text,
+                }}
+              >
+                {message.relationship}
+              </RelationshipBadge>
+            </ProfileInfo>
+          </ProfileContainer>
+          <MessageDate>{formatDate(message.createdAt)}</MessageDate>
 
-      </ProfileSection>
-
-      <MessageContent>{message.content}</MessageContent>
+        </ProfileSection>
+        <MessageContent>{message.content}</MessageContent>
+      </ContentContainer>
 
 
       <ButtonWrapper>

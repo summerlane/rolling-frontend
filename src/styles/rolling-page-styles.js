@@ -298,6 +298,16 @@ export const PerpendicularLineFirst = styled(PerpendicularLine)`
 
 export const PerpendicularLineSecond = styled(PerpendicularLine)``;
 
+
+
+// 배경색별 매핑
+const backgroundColors = {
+  blue: colors.blue[200],
+  green: colors.green[200],
+  purple: colors.purple[200],
+  beige: colors.beige[200],
+};
+
 const RollingPageWrapper = ({
   $backgroundcolor,
   $backgroundimage,
@@ -312,7 +322,7 @@ const RollingPageWrapper = ({
 export const RollingPageContainer = styled(RollingPageWrapper)`
   display: flex;
   justify-content: center;
-  background-color: ${(props) => props.$backgroundcolor || colors.blue[100]};
+  background-color: ${(props) => backgroundColors[props.$backgroundcolor] || colors.blue[100]};
   background-image: ${(props) =>
     props.$backgroundimage ? `url(${props.$backgroundimage})` : "none"};
   background-size: cover;
@@ -343,7 +353,6 @@ export const CardContainerWrapper = styled.div`
 
   ${media.medium`
     gap: 7px;
-    width: 100%;
   `}
 
   ${media.small`
@@ -384,11 +393,14 @@ export const Card = styled.div`
 
   ${media.medium`
     width: 100%;
-    height: auto;
+    min-height: 280px;
+    min-width: 360px;
   `}
 
   ${media.small`
     width: 100%;
+    min-height: 280px;
+    min-width: 360px;
     `}
 `;
 

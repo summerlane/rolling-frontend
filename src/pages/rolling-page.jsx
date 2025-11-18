@@ -28,8 +28,10 @@ export default function RollingPage() {
   // 편집 모드 확인 (URL이 /edit으로 끝나는지)
   const isEditMode = useEditMode();
 
+
   // API에서 수신자 데이터 가져오기
   const { recipient, error } = useRecipient(recipientId);
+
 
   // 삭제 액션 훅
   const { handleDeleteRecipient } = useDeleteActions();
@@ -71,6 +73,7 @@ export default function RollingPage() {
     handleDeleteRecipient(recipientId);
   };
 
+
   return (
     <>
       <RollingHeaderContainer>
@@ -89,6 +92,7 @@ export default function RollingPage() {
           {/* 이모지 및 공유 헤더 - topReactions 전달 */}
           <RollingPageHeader
             recipientId={recipientId}
+            recipientName={recipient.name}
             topReactions={recipient.topReactions || []}
             ArrowDownIcon={ArrowDownIcon}
             AddEmojiIcon={AddEmojiIcon}

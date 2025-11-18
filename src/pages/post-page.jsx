@@ -4,6 +4,7 @@ import { font } from "@/styles/font";
 import media from "@/styles/media";
 import Toggle from "@/components/common/toggle";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import Button from "@/components/common/button";
 import axios from "axios";
 
@@ -68,6 +69,8 @@ export default function PostPage() {
     colors.green[200],
   ];
 
+  const navigate = useNavigate();
+
   const [isSelectDiv, setIsSelectDiv] = useState(bgColors[0]);
   const [isSelectImg, setIsSelectImg] = useState(null);
 
@@ -106,6 +109,7 @@ export default function PostPage() {
       })
       .then((response) => {
         console.log(response.data);
+        navigate(`/post/${response.data.id}`);
         alert("전송을 성공하였습니다.");
       })
       .catch((error) => {
