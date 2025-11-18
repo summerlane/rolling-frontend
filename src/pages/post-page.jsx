@@ -1,12 +1,14 @@
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
+import axios from "axios";
 import { colors } from "@/styles/colors";
 import { font } from "@/styles/font";
 import media from "@/styles/media";
-import Toggle from "@/components/common/toggle";
-import { useState } from "react";
-import { useNavigate } from "react-router";
 import Button from "@/components/common/button";
-import axios from "axios";
+import Toggle from "@/components/common/toggle";
+
+
 
 const Container = styled.div`
   min-width: 380px;
@@ -70,6 +72,7 @@ export default function PostPage() {
     colors.blue[200],
     colors.green[200],
   ];
+
 
   const [isSelectDiv, setIsSelectDiv] = useState(bgColors[0]);
   const [isSelectImg, setIsSelectImg] = useState(null);
