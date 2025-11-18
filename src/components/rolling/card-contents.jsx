@@ -160,7 +160,10 @@ export default function CardContents({ recipientId, isEditMode = false }) {
                     />
                   )}
                 </CardContentStatus>
-                <CardContentText>{message.content}</CardContentText>
+                <CardContentText
+                  className="ql-editor"
+                  dangerouslySetInnerHTML={{ __html: message.content }}
+                />
                 <CardContentDate>
                   {formatDate(message.createdAt)}
                 </CardContentDate>

@@ -61,20 +61,10 @@ function RichTextEditor({ value, onChange }) {
         { align: "justify" },
       ],
       [{ list: "ordered" }, { list: "bullet" }],
-      ["link", "image"],
     ],
   };
 
-  const formats = [
-    "bold",
-    "italic",
-    "underline",
-    "align",
-    "list",
-    "bullet",
-    "link",
-    "image",
-  ];
+  const formats = ["bold", "italic", "underline", "align", "list"];
 
   return (
     <EditorContainer>
@@ -83,7 +73,7 @@ function RichTextEditor({ value, onChange }) {
         onChange={onChange}
         modules={modules}
         formats={formats}
-        placeholder="I am your reach text editor."
+        placeholder="500자 미만으로 입력해 주세요."
       />
     </EditorContainer>
   );

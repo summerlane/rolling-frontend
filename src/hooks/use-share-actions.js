@@ -29,14 +29,32 @@ export default function useShareActions() {
    * 카카오톡으로 공유
    */
   const shareToKakao = useCallback(
-    (url) => {
+    (url, recipientName = "롤링 페이퍼") => {
       if (!window.Kakao) {
         return false;
       }
 
       try {
-        window.Kakao.Share.sendScrap({
-          requestUrl: url,
+        window.Kakao.Share.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: `${recipientName}`,
+            description: '소중한 사람들의 마음을 모아보세요!',
+            imageUrl: 'https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png', // 기본 이미지
+            link: {
+              mobileWebUrl: url,
+              webUrl: url,
+            },
+          },
+          buttons: [
+            {
+              title: '롤링 페이퍼 보기',
+              link: {
+                mobileWebUrl: url,
+                webUrl: url,
+              },
+            },
+          ],
         });
         showToast.success("카카오톡으로 공유되었습니다.");
 

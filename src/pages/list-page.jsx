@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getRecipients } from "@/api/list-user-api";
 import {
   ButtonLink,
+  ButtonWrapper,
   CustomButton,
   PageContainer,
 } from "@/styles/list-page-styles";
@@ -85,9 +86,11 @@ export default function ListPage() {
         onLoadMore={fetchMoreRecent}
         nextCheck={recentNextUrl}
       />
-      <ButtonLink to="/post">
-        <CustomButton size="large">나도 만들어보기</CustomButton>
-      </ButtonLink>
+      <ButtonWrapper>
+        <CustomButton size="large">
+          <ButtonLink to="/post">나도 만들어보기</ButtonLink>
+        </CustomButton>
+      </ButtonWrapper>
     </PageContainer>
   );
 }

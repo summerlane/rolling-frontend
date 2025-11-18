@@ -13,6 +13,7 @@ import { RollingHeaderEmojiContainer } from "@/styles/rolling-page-styles";
  */
 export default function RollingPageHeader({
   recipientId,
+  recipientName,
   topReactions = [],
   ArrowDownIcon,
   AddEmojiIcon,
@@ -127,7 +128,12 @@ export default function RollingPageHeader({
         addEmojiIcon={AddEmojiIcon}
         shareIcon={ShareIcon}
         shareModalComponent={
-          <ShareModal isOpen={isShareModalOpen} onClose={closeShareModal} shareUrl={currentUrl} />
+          <ShareModal
+            isOpen={isShareModalOpen}
+            onClose={closeShareModal}
+            shareUrl={currentUrl}
+            recipientName={recipientName ? `${recipientName}님의 롤링 페이퍼` : "롤링 페이퍼"}
+          />
         }
       />
     </RollingHeaderEmojiContainer>

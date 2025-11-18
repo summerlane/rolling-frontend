@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useMemo } from "react";
+import styled, { css } from "styled-components";
 import { colors } from "@/styles/colors";
 import { font } from "@/styles/font";
 import { DEFAULT_IMAGE_ID } from "@/hooks/use-profile-image";
@@ -67,6 +67,14 @@ const ProfileDefaultBox = styled.div`
     height: 32px;
     object-fit: contain;
     border: none;
+
+    ${(props) =>
+      !props.$isDefault &&
+      css`
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      `}
   }
 `;
 
@@ -111,22 +119,42 @@ function ProfileImageSelector({
   isLoading,
   error,
 }) {
+  const displayImageUrl = useMemo(() => {
+    if (selectedId === DEFAULT_IMAGE_ID) {
+      return DEFAULT_ICON_URL;
+    }
+    const selectedImage = selectableImages.find((img) => img.id === selectedId);
+    return selectedImage ? selectedImage.url : DEFAULT_ICON_URL;
+  }, [selectedId, selectableImages]);
+
+  const isDefaultSelected =
+    selectedId === DEFAULT_IMAGE_ID ||
+    !selectableImages.find((img) => img.id === selectedId);
+
   return (
     <ProfileWrapper>
       <FormLabel as="p">프로필 이미지</FormLabel>
       <ProfileSelectorContainer>
         <ProfileDefaultBox
           $isSelected={selectedId === DEFAULT_IMAGE_ID}
+          $isDefault={isDefaultSelected}
           onClick={() => onImageSelect(DEFAULT_IMAGE_ID)}
         >
-          <img src={DEFAULT_ICON_URL} alt="기본 프로필 아이콘" />
+          <img
+            src={displayImageUrl}
+            alt={
+              isDefaultSelected ? "기본 프로필 아이콘" : "선택된 프로필 아이콘"
+            }
+          />
         </ProfileDefaultBox>
 
         <SelectorRightBlock>
           <SelectorPrompt>프로필 이미지를 선택해주세요!</SelectorPrompt>
           <SelectableImagesList>
-            {isLoading && <p>이미지를 불러오는 중입니다...</p>}
-            {error && <p>이미지를 불러오는 데 실패했습니다.</p>}
+            {isLoading && (
+              <p key="loading-msg">이미지를 불러오는 중입니다...</p>
+            )}
+            {error && <p key="error-msg">이미지를 불러오는 데 실패했습니다.</p>}
             {!isLoading &&
               !error &&
               selectableImages.map((image) => (

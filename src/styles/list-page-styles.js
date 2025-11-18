@@ -16,7 +16,7 @@ export const PageContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const ButtonLink = styled(Link)`
+export const ButtonWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -31,6 +31,10 @@ export const ButtonLink = styled(Link)`
   ${media.small`
     padding: 24px 20px;
   `}
+`;
+
+export const ButtonLink = styled(Link)`
+  display: block;
 `;
 
 export const CustomButton = styled(Button)`

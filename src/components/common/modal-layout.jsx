@@ -23,7 +23,6 @@ const ModalContainer = styled.div`
   padding: 40px;
   width: 600px;
   max-height: 90vh;
-  overflow-y: auto;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 
   ${media.medium`
@@ -46,6 +45,8 @@ const ModalTitle = styled.h2`
 
 const ModalContent = styled.div`
   width: 100%;
+  height: 100%;
+
 `;
 
 const CloseButton = styled.button`
