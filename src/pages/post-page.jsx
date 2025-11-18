@@ -1,12 +1,12 @@
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
+import axios from "axios";
 import { colors } from "@/styles/colors";
 import { font } from "@/styles/font";
 import media from "@/styles/media";
-import Toggle from "@/components/common/toggle";
-import { useState } from "react";
-import { useNavigate } from "react-router";
 import Button from "@/components/common/button";
-import axios from "axios";
+import Toggle from "@/components/common/toggle";
 
 const Container = styled.div`
   max-width: 720px;
