@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import {
   RollingHeaderContainer,
   RollingHeaderUserInfo,
@@ -24,6 +24,7 @@ export default function RollingPage() {
   // URL 파라미터에서 recipientId 가져오기 (/post/:id)
   const { id } = useParams();
   const recipientId = Number(id);
+  const navigate = useNavigate();
 
   // 편집 모드 확인 (URL이 /edit으로 끝나는지)
   const isEditMode = useEditMode();
@@ -71,6 +72,12 @@ export default function RollingPage() {
     handleDeleteRecipient(recipientId);
   };
 
+  // 수정 모드로 이동
+  const handleNavigateToEditMode = () => {
+    navigate(`/post/${recipientId}/edit`);
+  };
+
+
   return (
     <>
       <RollingHeaderContainer>
@@ -89,6 +96,7 @@ export default function RollingPage() {
           {/* 이모지 및 공유 헤더 - topReactions 전달 */}
           <RollingPageHeader
             recipientId={recipientId}
+            recipientName={recipient.name}
             topReactions={recipient.topReactions || []}
             ArrowDownIcon={ArrowDownIcon}
             AddEmojiIcon={AddEmojiIcon}
@@ -101,11 +109,14 @@ export default function RollingPage() {
         $backgroundcolor={recipient.backgroundColor}
         $backgroundimage={recipient.backgroundImageURL}
       >
-        {/* 편집 모드일 때만 페이지 삭제 버튼 표시 */}
         <CardContainerWrapper>
-          {isEditMode && (
+          {isEditMode ? (
             <CardPageDeleteButton onClick={handleOpenDeletePageModal}>
               삭제하기
+            </CardPageDeleteButton>
+          ) : (
+            <CardPageDeleteButton onClick={handleNavigateToEditMode}>
+              수정하기
             </CardPageDeleteButton>
           )}
 

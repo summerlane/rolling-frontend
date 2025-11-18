@@ -19,7 +19,7 @@ const Overlay = styled.div`
  * 공유 모달 컴포넌트
  * 책임: 공유 모달 UI 및 공유 액션 연결
  */
-export default function ShareModal({ isOpen, onClose, shareUrl }) {
+export default function ShareModal({ isOpen, onClose, shareUrl, recipientName }) {
   // 카카오 SDK 초기화
   useKakaoSdk();
 
@@ -36,7 +36,7 @@ export default function ShareModal({ isOpen, onClose, shareUrl }) {
 
   // 카카오톡 공유 핸들러
   const handleKakaoShare = () => {
-    shareToKakao(shareUrl);
+    shareToKakao(shareUrl, recipientName);
   };
 
   if (!isOpen) return null;
