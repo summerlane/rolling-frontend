@@ -322,11 +322,14 @@ const RollingPageWrapper = ({
 export const RollingPageContainer = styled(RollingPageWrapper)`
   display: flex;
   justify-content: center;
+  
   background-color: ${(props) => backgroundColors[props.$backgroundcolor] || colors.blue[100]};
   background-image: ${(props) =>
     props.$backgroundimage ? `url(${props.$backgroundimage})` : "none"};
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed; 
+
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
