@@ -18,15 +18,11 @@ export const PageContainer = styled.div`
 
 export const ButtonWrapper = styled.div`
   width: 100%;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 24px 0;
-  margin-top: 40px;
-
-  ${media.medium`
-    padding: 24px;
-  `}
+  padding: 24px;
 
   ${media.small`
     padding: 24px 20px;
@@ -34,11 +30,11 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ButtonLink = styled(Link)`
-  display: block;
+  padding: 14px 60px;
 `;
 
 export const CustomButton = styled(Button)`
-  padding: 14px 60px;
+  padding: 0;
 
   ${media.medium`
     width: 100%;
@@ -287,6 +283,7 @@ export const WriterCountText = styled.div`
 `;
 
 export const EmojiWrapper = styled(RollingHeaderEmojiContainer)`
+  height: 50px;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   padding-top: 17px;
   font-size: 14px;
