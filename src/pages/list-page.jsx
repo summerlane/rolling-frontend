@@ -7,6 +7,7 @@ import {
   PageContainer,
 } from "@/styles/list-page-styles";
 import { CardList } from "@/components/list/card-list";
+import CardSkeletonList from "@/components/list/card-skeleton-list";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
@@ -65,7 +66,12 @@ export default function ListPage() {
   };
 
   if (isLoading) {
-    return <PageContainer>로딩 중...</PageContainer>;
+    return (
+      <PageContainer>
+        <CardSkeletonList title="인기 롤링 페이퍼 🔥" />
+        <CardSkeletonList title="최근에 만든 롤링 페이퍼 ⭐️" />
+      </PageContainer>
+    );
   }
 
   if (error) {

@@ -298,8 +298,6 @@ export const PerpendicularLineFirst = styled(PerpendicularLine)`
 
 export const PerpendicularLineSecond = styled(PerpendicularLine)``;
 
-
-
 // 배경색별 매핑
 const backgroundColors = {
   blue: colors.blue[200],
@@ -319,16 +317,20 @@ const RollingPageWrapper = ({
     ...rest,
   });
 };
+
 export const RollingPageContainer = styled(RollingPageWrapper)`
   display: flex;
   justify-content: center;
-  
-  background-color: ${(props) => backgroundColors[props.$backgroundcolor] || colors.blue[100]};
+
+  background-color: ${(props) =>
+    props.$backgroundimage
+      ? colors.gray[100]
+      : backgroundColors[props.$backgroundcolor]};
   background-image: ${(props) =>
     props.$backgroundimage ? `url(${props.$backgroundimage})` : "none"};
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed; 
+  background-attachment: fixed;
 
   width: 100%;
   min-height: 100vh;

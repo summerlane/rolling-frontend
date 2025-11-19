@@ -1,14 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import { getRecipientById } from "@/api/rolling-page-api";
 
-
 /**
  * 특정 유저 상세 조회 커스텀 훅
  * 책임: 단일 유저 데이터 관리 및 API 호출
  */
 export function useRecipient(recipientId, autoFetch = true) {
   const [recipient, setRecipient] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const fetchRecipient = useCallback(async () => {
@@ -45,7 +44,3 @@ export function useRecipient(recipientId, autoFetch = true) {
     fetchRecipient,
   };
 }
-
-
-
-

@@ -19,6 +19,7 @@ import { useDeleteActions } from "@/hooks/use-delete-actions";
 import ArrowDownIcon from "@/assets/icons/arrow-down.svg";
 import AddEmojiIcon from "@/assets/icons/add-emoji.svg";
 import ShareIcon from "@/assets/icons/share.svg";
+import CardSkeletonRolling from "@/components/rolling/card-skeleton-rolling";
 
 export default function RollingPage() {
   // URL 파라미터에서 recipientId 가져오기 (/post/:id)
@@ -30,7 +31,7 @@ export default function RollingPage() {
   const isEditMode = useEditMode();
 
   // API에서 수신자 데이터 가져오기
-  const { recipient, error } = useRecipient(recipientId);
+  const { recipient, error, loading } = useRecipient(recipientId);
 
   // 삭제 액션 훅
   const { handleDeleteRecipient } = useDeleteActions();
@@ -43,12 +44,16 @@ export default function RollingPage() {
     return <div>잘못된 페이지 주소입니다.</div>;
   }
 
-  if (error) {
-    return <div>에러가 발생했습니다: {error}</div>;
+  if (loading || !recipient) {
+    return (
+      <RollingPageContainer>
+        <CardSkeletonRolling />
+      </RollingPageContainer>
+    );
   }
 
-  if (!recipient) {
-    return <div>데이터를 불러올 수 없습니다.</div>;
+  if (error) {
+    return <div>에러가 발생했습니다: {error}</div>;
   }
 
   // recentMessages에서 프로필 데이터 추출 (최신순 3개)
@@ -76,7 +81,6 @@ export default function RollingPage() {
   const handleNavigateToEditMode = () => {
     navigate(`/post/${recipientId}/edit`);
   };
-
 
   return (
     <>
